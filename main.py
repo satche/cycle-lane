@@ -1,6 +1,8 @@
 import csv
 import overpy
 from geopy.distance import geodesic
+import pandas as pd
+import folium
 
 # Define the region
 region = "Vaud"
@@ -54,12 +56,11 @@ def main():
                 'wayId': way.id,
                 'cycleway': cycleway,
                 'length': length,
-                'coordinates': [(node.lat, node.lon) for node in nodes]
+                'coordinates': [(float(node.lat), float(node.lon)) for node in nodes]
             })
+
         else:
             print("No cycle lanes found.")
-
-    print(cycle_lanes)
 
     # Specify the field names (column names) for the CSV file
     fieldnames = ['wayId', 'cycleway', 'length', 'coordinates']
@@ -74,6 +75,23 @@ def main():
         # Write the data rows
         for lane in cycle_lanes:
             writer.writerow(lane)
+
+    # Read the CSV file
+    df = pd.read_csv('cycle_lanes.csv')
+
+    # Convert the 'coordinates' column from string to list
+    df['coordinates'] = df['coordinates'].apply(eval)
+
+    # Create a map centered around the coordinates of the first cycle lane
+    m = folium.Map(location=df['coordinates'][0][0], zoom_start=13)
+
+    # Add a line for each cycle lane
+    for _, row in df.iterrows():
+        folium.PolyLine(row['coordinates'], color="red",
+                        weight=2.5, opacity=1).add_to(m)
+
+    # Display the map
+    m.save('map.html')
 
 
 if __name__ == "__main__":
