@@ -1,12 +1,16 @@
 import Openrouteservice from "openrouteservice-js";
 import L from "leaflet";
 import Papa from "papaparse";
-import env from "./.env";
 
 /********************************
  * Settings
  ********************************/
-const apiKey = env.API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY;
+
+let response = await fetch("/Data_communes_28features.csv");
+let file = await response.text();
+
+let startMarker, endMarker;
 
 /********************************
  * Map Initialization
@@ -25,9 +29,6 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 /********************************
  * CSV Parsing
  ********************************/
-let response = await fetch("/Data_communes_28features.csv");
-let file = await response.text();
-
 Papa.parse(file, {
   header: true,
   worker: true, // Don't bog down the main thread if its a big file
@@ -44,17 +45,12 @@ function displayMarkerOnMap(data) {
   let lat = data["Latitude"];
   let lng = data["Longitude"];
 
-  let popup = L.popup().setContent(
-    `<b>${name}</b><br>
-    ${lat}, ${lng}`
-  );
-
   if (lat === undefined || lng === undefined) {
     return;
   }
 
   let icon = L.icon({
-    iconSize: 35,
+    iconSize: [35, 35],
     iconUrl:
       "https://api.iconify.design/material-symbols:location-on.svg?color=%23000000",
   });
@@ -65,26 +61,93 @@ function displayMarkerOnMap(data) {
     riseOnHover: true,
   })
     .addTo(map)
-    .bindPopup(popup)
-    .openPopup();
+    .on("click", onMarkerClick);
+}
+
+function onMarkerClick(e) {
+  // Set start marker
+  if (startMarker == undefined) {
+    unselectAllMarkers();
+    selectThisMarker(e.target);
+    startMarker = e.target;
+    return;
+  }
+
+  // Set end marker
+  if (endMarker == undefined) {
+    selectThisMarker(e.target);
+    endMarker = e.target;
+    calculateRoute().then(route => {
+      displayRoute(route);
+    });
+    return;
+  }
+
+  // Both markers are set
+  unselectAllMarkers();
+  selectThisMarker(e.target);
+  startMarker = e.target;
+}
+
+function selectThisMarker(marker) {
+  marker.setOpacity(1);
+}
+
+function unselectAllMarkers() {
+  startMarker = undefined;
+  endMarker = undefined;
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Marker) {
+      layer.setOpacity(0.5);
+    }
+    if (layer instanceof L.Polyline) {
+      map.removeLayer(layer);
+    }
+  });
 }
 
 /********************************
- * API calls
+ * Calculate route
  ********************************/
 let direction = new Openrouteservice.Directions({ api_key: apiKey });
 
-try {
-  let response = await direction.calculate({
-    coordinates: [
-      [6.6392, 46.5895],
-      [6.611, 46.591],
-    ],
-    profile: "cycling-regular",
-    format: "json",
+async function calculateRoute() {
+  if (startMarker == undefined || endMarker == undefined) {
+    return;
+  }
+
+  const response = await direction
+    .calculate({
+      coordinates: [
+        [startMarker.getLatLng().lng, startMarker.getLatLng().lat],
+        [endMarker.getLatLng().lng, endMarker.getLatLng().lat],
+      ],
+      profile: "cycling-regular",
+      format: "geojson",
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+  return response;
+}
+
+/********************************
+ * Display route
+ ********************************/
+function displayRoute(route) {
+  if (route == undefined) {
+    return;
+  }
+  console.log(route);
+
+  let line = L.geoJSON(route.features[0].geometry, {
+    style: {
+      color: "blue",
+      weight: 5,
+      opacity: 0.7,
+    },
   });
-  // console.log("response: ", response.routes[0]);
-} catch (err) {
-  console.log("An error occurred: " + err.status);
-  console.error(await err.response.json());
+
+  line.addTo(map);
 }
