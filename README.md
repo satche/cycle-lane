@@ -3,10 +3,9 @@ An academical projet to cluster cycle lanes in Switzerland
 
 ## Setup
 
-Make sure to have [Python](https://www.python.org/downloads/) >3.11 installed.
-
-## Usage
+Make sure to have [npm](https://www.npmjs.com/) installed on your machine.
 
 ```shell
-$ python main.py
+$ npm install
+$ npm run dev
 ```
