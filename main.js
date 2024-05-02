@@ -1,23 +1,16 @@
 import Openrouteservice from "openrouteservice-js";
 import L from "leaflet";
 import Papa from "papaparse";
+import env from "./.env";
 
-// Settings
-const apiKey = "5b3ce3597851110001cf6248e16ee360cf82450e9a8d904c5c229c1c";
+/********************************
+ * Settings
+ ********************************/
+const apiKey = env.API_KEY;
 
-// Read the data from the csv file
-const response = await fetch("/Data_communes_28features.csv");
-const file = await response.text();
-
-Papa.parse(file, {
-  header: true,
-  worker: true, // Don't bog down the main thread if its a big file
-  step: function (result) {
-    displayMarkerOnMap(result.data);
-  },
-});
-
-// Display the map on the DOM
+/********************************
+ * Map Initialization
+ ********************************/
 const mapNodeDOM = document.getElementById("map");
 
 let map = L.map(mapNodeDOM, {
@@ -29,13 +22,29 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// Display the marker on the map
-function displayMarkerOnMap(data) {
-  const name = data["Libellé"];
-  const lat = data["Latitude"];
-  const lng = data["Longitude"];
+/********************************
+ * CSV Parsing
+ ********************************/
+let response = await fetch("/Data_communes_28features.csv");
+let file = await response.text();
 
-  const popup = L.popup().setContent(
+Papa.parse(file, {
+  header: true,
+  worker: true, // Don't bog down the main thread if its a big file
+  step: function (result) {
+    displayMarkerOnMap(result.data);
+  },
+});
+
+/********************************
+ * Marker Display
+ ********************************/
+function displayMarkerOnMap(data) {
+  let name = data["Libellé"];
+  let lat = data["Latitude"];
+  let lng = data["Longitude"];
+
+  let popup = L.popup().setContent(
     `<b>${name}</b><br>
     ${lat}, ${lng}`
   );
@@ -44,22 +53,25 @@ function displayMarkerOnMap(data) {
     return;
   }
 
-  L.marker([lat, lng]).addTo(map).bindPopup(popup).openPopup();
+  let icon = L.icon({
+    iconSize: 35,
+    iconUrl:
+      "https://api.iconify.design/material-symbols:location-on.svg?color=%23000000",
+  });
+
+  L.marker([lat, lng], {
+    title: name,
+    icon: icon,
+    riseOnHover: true,
+  })
+    .addTo(map)
+    .bindPopup(popup)
+    .openPopup();
 }
 
-// Get info on this clicked circle
-function onMapClick(e) {
-  if (clickedMarker) {
-    map.removeLayer(clickedMarker);
-  }
-  console.log("You clicked the map at " + e.latlng);
-}
-
-map.eachLayer(function (layer) {
-  layer.on("click", onMapClick);
-});
-
-// API Calls
+/********************************
+ * API calls
+ ********************************/
 let direction = new Openrouteservice.Directions({ api_key: apiKey });
 
 try {
