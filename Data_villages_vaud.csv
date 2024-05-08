@@ -1,73 +1,4 @@
-Village,District,Latitude,Longitude,Population,Energie solaire,Cluster
-Vallamand,Broye-Vully,46.9299746,7.0400809,389,1350,1
-Chesalles-sur-Moudon,Broye-Vully,46.6752799,6.8330547,169,1350,1
-Mur,Broye-Vully,46.9442044,7.0603683,203,1350,1
-Neyruz-sur-Moudon,Gros-de-Vaud,46.6973091,6.7872879,119,1231,1
-Sottens,Gros-de-Vaud,46.6554824,6.7421506,210,1231,1
-Grandvaux,Lavaux-Oron,46.4941972,6.7161306,1985,985,0
-Carrouge,Lavaux-Oron,46.6044706,6.7755538,1111,985,1
-Combremont-le-Grand,Broye-Vully,46.7619853,6.8180582,308,1350,1
-Saint-Saphorin-sur-Morges,Morges,46.5465313,6.4867816,462,1273,1
-Poliez-le-Grand,Gros-de-Vaud,46.637758,6.663604,528,1231,1
-Oron-la-Ville,Lavaux-Oron,46.5709236,6.8274668,1224,985,0
-Oulens-sur-Lucens,Broye-Vully,46.7041201,6.8080342,52,1350,1
-Fontanezier,Jura-Nord vaudois,46.8537878,6.6533076,70,1205,2
-Cremin,Broye-Vully,46.7259218,6.8432266,58,1350,1
-Villette,Lavaux-Oron,46.4944793,6.7094638,581,985,0
-Colombier,Morges,46.5565027,6.4719318,522,1273,1
-Essert-Pittet,Jura-Nord vaudois,46.7276519,6.5821566,164,1205,0
-Granges-près-Marnand,Broye-Vully,46.7644219,6.8864746,1146,1350,0
-Sarzens,Broye-Vully,46.6820356,6.8496603,80,1350,1
-Monnaz,Morges,46.5286626,6.4794327,372,1273,1
-Ecoteaux,Lavaux-Oron,46.5455062,6.8632391,331,985,1
-Villars-Mendraz,Gros-de-Vaud,46.6462278,6.7293282,190,1231,1
-Prahins,Jura-Nord vaudois,46.7347103,6.7398561,126,1205,1
-Goumoens-la-Ville,Gros-de-Vaud,46.6581874,6.6048232,611,1231,1
-Gressy,Jura-Nord vaudois,46.749093,6.63595,139,1205,3
-Vuibroye,Lavaux-Oron,46.5717416,6.8052936,120,985,1
-Marnand,Broye-Vully,46.756488,6.8999296,145,1350,0
-Sugnens,Gros-de-Vaud,46.6549732,6.6718853,233,1231,0
-Corcelles-sur-Chavornay,Jura-Nord vaudois,46.7036344,6.6011825,353,1205,1
-Gossens,Jura-Nord vaudois,46.738321,6.699106,113,1205,1
-Correvon,Gros-de-Vaud,46.7158142,6.7373666,108,1231,1
-Les Cullayes,Lavaux-Oron,46.5730628,6.7537317,628,985,1
-Thierrens,Gros-de-Vaud,46.7034256,6.7550299,619,1231,1
-Combremont-le-Petit,Broye-Vully,46.7493162,6.8087604,368,1350,1
-Mézery-près-Donneloye,Jura-Nord vaudois,46.7484266,6.7262743,69,1205,1
-Chanéaz,Gros-de-Vaud,46.7295664,6.7417615,107,1231,1
-Seigneux,Broye-Vully,46.7273878,6.8786301,276,1350,1
-Malapalud,Gros-de-Vaud,46.621184,6.6411466,92,1231,1
-Denezy,Gros-de-Vaud,46.7216537,6.7845389,128,1231,1
-Ferlens,Lavaux-Oron,46.5888578,6.7868326,331,985,1
-Chapelle-sur-Moudon,Gros-de-Vaud,46.6691282,6.736023,405,1231,1
-Cerniaz,Broye-Vully,46.7271483,6.896079,63,1350,1
-Montherod,Morges,46.4985819,6.3660069,439,1273,1
-Riex,Lavaux-Oron,46.4935165,6.7358129,269,985,0
-Sassel,Broye-Vully,46.7766193,6.857103,148,1350,1
-Martherenges,Gros-de-Vaud,46.6609373,6.7532478,78,1231,1
-Villars-Tiercelin,Gros-de-Vaud,46.6253713,6.7045253,343,1231,1
-Villars-Bramard,Broye-Vully,46.7191779,6.8989641,118,1350,1
-Peyres-Possens,Gros-de-Vaud,46.6625985,6.707191,140,1231,1
-Forel-sur-Lucens,Broye-Vully,46.7282576,6.8222876,152,1350,1
-Epesses,Lavaux-Oron,46.4913262,6.7475919,332,985,0
-Saint-Cierges,Gros-de-Vaud,46.6903286,6.7349556,458,1231,1
-Mézières,Lavaux-Oron,46.5957836,6.7705874,1193,985,1
-Oleyres,Broye-Vully,46.8534797,7.0384206,240,1350,1
-Saint-Légier-La Chiésaz,Riviera-Pays d'Enhaut,46.4722777,6.8759701,4068,1115,2
-Sédeilles,Broye-Vully,46.7482527,6.9344024,144,1350,1
-Bellerive,Broye-Vully,46.9237676,7.0231892,632,1350,1
-Brenles,Broye-Vully,46.6712187,6.8538119,144,1350,1
-Montmagny,Broye-Vully,46.9265535,7.0105362,178,1350,1
-Villars-le-Grand,Broye-Vully,46.9055732,6.9902145,275,1350,1
-Cully,Lavaux-Oron,46.4883249,6.7296804,1785,985,0
-Chabrey,Broye-Vully,46.9264329,6.9812292,267,1350,1
-Constantine,Broye-Vully,46.9181932,7.0115066,327,1350,1
-Cottens,Morges,46.5718814,6.4547941,343,1273,1
-Pampigny,Morges,46.5806506,6.4284521,828,1273,0
-Sévery,Morges,46.5758446,6.4388219,223,1273,0
-Blonay,Riviera-Pays d'Enhaut,46.4650397,6.8951981,4695,1115,2
-Bussy-Chardonney,Morges,46.5291113,6.4419818,337,1273,0
-Bioley-Orjulaz,Gros-de-Vaud,46.6211356,6.5984553,458,1231,1
+Nom,Districts,Latitude,Longitude,Population,Energie solaire,Cluster
 Chavornay,Jura-Nord vaudois,46.706261,6.5693871,4903,1205,0
 Orbe,Jura-Nord vaudois,46.724144,6.5317943,6601,1205,0
 Chavannes-des-Bois,Nyon,46.3147141,6.132561,797,1461,1
@@ -80,6 +11,11 @@ Allaman,Morges,46.4707776,6.396174,402,1273,0
 Lavigny,Morges,46.5011843,6.4045912,897,1273,1
 Grandson,Jura-Nord vaudois,46.8086306,6.6417532,3181,1205,0
 Vallorbe,Jura-Nord vaudois,46.7120146,6.3792318,3850,1205,2
+Le Pont,Jura-Nord vaudois,46.6683679,6.3256327,700,1205,2
+Le Sentier,Jura-Nord vaudois,46.606022,6.2314896,4000,1205,2
+Le Brassus,Jura-Nord vaudois,46.5839591,6.2123361,1500,1205,2
+L'Orient,Jura-Nord vaudois,46.6015355,6.2401453,586,1205,2
+Les Charbonnières,Jura-Nord vaudois,46.6663653,6.3149896,367,1205,2
 Le Lieu,Jura-Nord vaudois,46.6462186,6.280313,795,1205,2
 Vaulion,Jura-Nord vaudois,46.6883547,6.3894066,437,1205,2
 Romainmôtier-Envy,Jura-Nord vaudois,46.6932583,6.4611912,526,1205,2
@@ -90,6 +26,7 @@ La Sarraz,Morges,46.6590583,6.5124448,1728,1273,0
 Orny,Morges,46.6676263,6.5256309,334,1273,1
 Lucens,Broye-Vully,46.708447,6.8389766,4133,1350,0
 Bex,Aigle,46.2513776,7.0123881,7364,1115,2
+Les Plans-sur-Bex,Aigle,46.2570475,7.0903354,132,1115,2
 Paudex,Lavaux-Oron,46.5056892,6.6732336,1416,985,3
 Belmont-sur-Lausanne,Lavaux-Oron,46.5200729,6.6800519,3575,985,1
 Corcelles-près-Concise,Jura-Nord vaudois,46.8480696,6.7079314,310,1205,1
@@ -100,11 +37,13 @@ Saint-George,Nyon,46.5138321,6.2602719,618,1461,2
 Premier,Jura-Nord vaudois,46.7047978,6.444282,193,1205,2
 Saint-Cergue,Nyon,46.4460968,6.158111,1601,1461,2
 Syens,Broye-Vully,46.6456578,6.7782652,123,1350,1
+Vallamand,Broye-Vully,46.9299746,7.0400809,389,1350,1
 Mont-la-Ville,Morges,46.645546,6.4077926,328,1273,2
 Essertines-sur-Yverdon,Gros-de-Vaud,46.7152242,6.6383585,663,1231,1
 Crassier,Nyon,46.374331,6.164548,1114,1461,1
 Corsier-sur-Vevey,Riviera-Pays d'Enhaut,46.4705779,6.8436858,3409,1115,0
 Borex,Nyon,46.379071,6.1777222,899,1461,1
+Chesalles-sur-Moudon,Broye-Vully,46.6752799,6.8330547,169,1350,1
 Montagny-près-Yverdon,Jura-Nord vaudois,46.7914576,6.6117904,701,1205,1
 Cheseaux-sur-Lausanne,Lausanne,46.5854324,6.6061393,2939,1074,0
 Montcherand,Jura-Nord vaudois,46.7330803,6.5102099,471,1205,1
@@ -112,9 +51,13 @@ L'Abergement,Jura-Nord vaudois,46.7537886,6.4886777,249,1205,2
 Penthéréaz,Gros-de-Vaud,46.6818849,6.6035686,386,1231,1
 Chigny,Morges,46.5201861,6.4773257,337,1273,0
 Perroy,Nyon,46.4681469,6.3642905,1413,1461,1
+Mur,Broye-Vully,46.9442044,7.0603683,203,1350,1
 Roche,Aigle,46.3610602,6.9309298,1411,1115,0
 Echallens,Gros-de-Vaud,46.6381163,6.6346951,4281,1231,0
+Neyruz-sur-Moudon,Gros-de-Vaud,46.6973091,6.7872879,119,1231,1
 Ependes,Jura-Nord vaudois,46.7431583,6.6083432,343,1205,0
+Cottens,Morges,46.5718814,6.4547941,343,1273,1
+Sottens,Gros-de-Vaud,46.6554824,6.7421506,210,1231,1
 Chéserex,Nyon,46.3997632,6.1737875,1243,1461,2
 Vaux-sur-Morges,Morges,46.5353976,6.463827,178,1273,1
 Treytorrens,Broye-Vully,46.7731198,6.8003881,102,1350,1
@@ -124,8 +67,11 @@ Gollion,Morges,46.5852339,6.5088361,1073,1273,1
 Le Mont-sur-Lausanne,Lausanne,46.5530996,6.6354534,6675,1074,1
 Lussy-sur-Morges,Morges,46.5028627,6.4508849,645,1273,1
 Bussy-sur-Moudon,Broye-Vully,46.6858284,6.8108726,186,1350,1
+Grandvaux,Lavaux-Oron,46.4941972,6.7161306,1985,985,0
+Palézieux,Lavaux-Oron,46.5550197,6.8304613,1326,985,0
 Mollens,Morges,46.577232,6.3634849,288,1273,2
 Signy-Avenex,Nyon,46.3907229,6.2018023,445,1461,1
+Carrouge,Lavaux-Oron,46.6044706,6.7755538,1111,985,1
 Penthaz,Gros-de-Vaud,46.597822,6.540398,1287,1231,1
 Rolle,Nyon,46.4601563,6.3380469,6067,1461,3
 Agiez,Jura-Nord vaudois,46.7199018,6.508106,294,1205,1
@@ -134,8 +80,10 @@ Bonvillars,Jura-Nord vaudois,46.8375743,6.6706023,510,1205,0
 Villars-Epeney,Jura-Nord vaudois,46.7817278,6.6969935,89,1205,1
 Fontaines-sur-Grandson,Jura-Nord vaudois,46.8353764,6.6193942,154,1205,2
 Molondin,Jura-Nord vaudois,46.7606762,6.7492454,228,1205,1
+Combremont-le-Grand,Broye-Vully,46.7619853,6.8180582,308,1350,1
 Belmont-sur-Yverdon,Jura-Nord vaudois,46.7454798,6.6241604,358,1205,1
 Rossenges,Broye-Vully,46.6520362,6.7765557,63,1350,1
+Saint-Saphorin-sur-Morges,Morges,46.5465313,6.4867816,462,1273,1
 Sainte-Croix,Jura-Nord vaudois,46.822522,6.5009286,4684,1205,2
 Penthalaz,Gros-de-Vaud,46.6113262,6.5252453,3209,1231,0
 Corcelles-le-Jorat,Broye-Vully,46.6058744,6.7407986,412,1350,1
@@ -151,22 +99,28 @@ Chêne-Pâquier,Jura-Nord vaudois,46.771165,6.7684976,131,1205,1
 Orzens,Jura-Nord vaudois,46.7239217,6.6830459,198,1205,1
 Démoret,Jura-Nord vaudois,46.7466929,6.7570249,126,1205,1
 Donneloye,Jura-Nord vaudois,46.744325,6.7155281,731,1205,1
+Poliez-le-Grand,Gros-de-Vaud,46.637758,6.663604,528,1231,1
 Dully,Nyon,46.4304617,6.2957383,617,1461,1
 Yvonand,Jura-Nord vaudois,46.7983158,6.7445021,2278,1205,0
 Bercher,Gros-de-Vaud,46.6920285,6.7089748,1148,1231,0
 Sergey,Jura-Nord vaudois,46.7505419,6.4995735,99,1205,1
 Fey,Gros-de-Vaud,46.675524,6.6827085,636,1231,0
+Oron-la-Ville,Lavaux-Oron,46.5709236,6.8274668,1224,985,0
 Vinzel,Nyon,46.4476073,6.2793859,351,1461,1
+Oulens-sur-Lucens,Broye-Vully,46.7041201,6.8080342,52,1350,1
+Fontanezier,Jura-Nord vaudois,46.8537878,6.6533076,70,1205,2
 Commugny,Nyon,46.3182308,6.1757684,2508,1461,1
 Saint-Oyens,Morges,46.4980293,6.3063994,326,1273,1
 Valeyres-sous-Ursins,Jura-Nord vaudois,46.7458204,6.655254,241,1205,1
 Rennaz,Aigle,46.3757048,6.9190655,777,1115,1
 Gilly,Nyon,46.4575111,6.2969883,768,1461,1
+Cremin,Broye-Vully,46.7259218,6.8432266,58,1350,1
 Eclépens,Morges,46.6515007,6.5285061,904,1273,0
 Lully,Morges,46.5052587,6.4647302,763,1273,1
 Henniez,Broye-Vully,46.7422549,6.8834048,230,1350,0
 Bretonnières,Jura-Nord vaudois,46.7122384,6.4734908,236,1205,0
 Sullens,Gros-de-Vaud,46.5931372,6.5661454,907,1231,1
+Villette,Lavaux-Oron,46.4944793,6.7094638,581,985,0
 Mutrux,Jura-Nord vaudois,46.8825207,6.7261849,138,1205,2
 Dompierre,Broye-Vully,46.7081899,6.8835369,247,1350,1
 Tannay,Nyon,46.3089604,6.1757001,1436,1461,0
@@ -178,28 +132,37 @@ Villars-sous-Yens,Morges,46.5102444,6.4286538,560,1273,1
 Chamblon,Jura-Nord vaudois,46.7772764,6.6044112,590,1205,1
 Berolle,Morges,46.5583845,6.3373241,299,1273,2
 Bettens,Gros-de-Vaud,46.6275904,6.5770883,529,1231,1
+Colombier,Morges,46.5565027,6.4719318,522,1273,1
 Oppens,Gros-de-Vaud,46.714312,6.6923429,177,1231,1
 Giez,Jura-Nord vaudois,46.8117633,6.6177511,391,1205,1
 La Praz,Jura-Nord vaudois,46.6675257,6.4272029,157,1205,2
+Essert-Pittet,Jura-Nord vaudois,46.7276519,6.5821566,164,1205,0
 Crans,Nyon,46.3579285,6.2058302,2043,1461,1
 Ropraz,Broye-Vully,46.6153223,6.7515592,373,1350,1
 Rivaz,Lavaux-Oron,46.4762772,6.7786403,353,985,0
-Vugelles-La Mothe,Jura-Nord vaudois,46.8239401,6.5757152,129,1205,2
+Vugelles-La Mothe,Jura-Nord vaudois,46.81927,6.5676637,122,1205,2
 Curtilles,Broye-Vully,46.7005524,6.8486858,308,1350,1
+Granges-près-Marnand,Broye-Vully,46.7644219,6.8864746,1146,1350,0
 Tartegnin,Nyon,46.4666552,6.3156804,228,1461,1
+Sarzens,Broye-Vully,46.6820356,6.8496603,80,1350,1
 Genolier,Nyon,46.4350251,6.2178235,1761,1461,0
+Monnaz,Morges,46.5286626,6.4794327,372,1273,1
 Bottens,Gros-de-Vaud,46.6169088,6.6607269,917,1231,1
 Vich,Nyon,46.4294193,6.2505497,734,1461,1
+Ecoteaux,Lavaux-Oron,46.5455062,6.8632391,331,985,1
 Prangins,Nyon,46.3947976,6.2487871,3909,1461,1
 Saint-Barthélemy,Gros-de-Vaud,46.6355663,6.6001447,777,1231,1
 Montricher,Morges,46.6001762,6.375822,933,1273,2
 Bioley-Magnoux,Jura-Nord vaudois,46.7255605,6.7108156,196,1205,1
 Suchy,Jura-Nord vaudois,46.7232325,6.5994077,487,1205,1
+Villars-Mendraz,Gros-de-Vaud,46.6462278,6.7293282,190,1231,1
 Chevroux,Broye-Vully,46.8898441,6.9053929,435,1350,1
 Aclens,Morges,46.5680294,6.51076,363,1273,1
+Prahins,Jura-Nord vaudois,46.7347103,6.7398561,126,1205,1
 Pompaples,Morges,46.6666443,6.5106833,761,1273,1
 Bournens,Gros-de-Vaud,46.6041672,6.5633012,360,1231,1
 Le Vaud,Nyon,46.4774891,6.2355007,942,1461,1
+Goumoens-la-Ville,Gros-de-Vaud,46.6581874,6.6048232,611,1231,1
 Denens,Morges,46.518323,6.4564786,699,1273,1
 Tolochenaz,Morges,46.5047001,6.4734539,1880,1273,0
 Begnins,Nyon,46.4411298,6.2492689,1335,1461,1
@@ -211,8 +174,11 @@ Lussery-Villars,Gros-de-Vaud,46.6309961,6.5251994,406,1231,1
 Duillier,Nyon,46.4097312,6.235451,1008,1461,1
 Luins,Nyon,46.442819,6.271154,611,1461,1
 Boulens,Gros-de-Vaud,46.681059,6.7192139,400,1231,1
+Villars-sous-Champvent,Jura-Nord vaudois,46.7861393,6.583353,45,1205,1
+Gressy,Jura-Nord vaudois,46.749093,6.63595,139,1205,3
 Bretigny-sur-Morrens,Gros-de-Vaud,46.596563,6.640643,747,1231,1
 Gingins,Nyon,46.4094508,6.1779167,1037,1461,2
+Vuibroye,Lavaux-Oron,46.5717416,6.8052936,120,985,1
 Préverenges,Morges,46.5183844,6.5267369,5190,1273,3
 Grandevent,Jura-Nord vaudois,46.8388002,6.6065632,226,1205,2
 Bofflens,Jura-Nord vaudois,46.7045569,6.4989467,189,1205,1
@@ -227,10 +193,14 @@ Vucherens,Broye-Vully,46.624684,6.7769649,534,1350,1
 Assens,Gros-de-Vaud,46.6127871,6.6225936,1024,1231,0
 Saint-Prex,Morges,46.4809059,6.4586004,5437,1273,0
 Pomy,Jura-Nord vaudois,46.7609575,6.6663747,736,1205,1
+Marnand,Broye-Vully,46.756488,6.8999296,145,1350,0
 Moiry,Morges,46.6485773,6.4552338,202,1273,2
 Forel (Lavaux),Lavaux-Oron,46.5419511,6.77037,1704,985,1
 Longirod,Nyon,46.4943826,6.2581282,344,1461,2
+Sugnens,Gros-de-Vaud,46.6549732,6.6718853,233,1231,0
 Denges,Morges,46.5241679,6.5402546,1631,1273,0
+Corcelles-sur-Chavornay,Jura-Nord vaudois,46.7036344,6.6011825,353,1205,1
+Pampigny,Morges,46.5806506,6.4284521,828,1273,0
 Féchy,Morges,46.4786555,6.3747532,861,1273,1
 Grens,Nyon,46.3937213,6.1916774,365,1461,1
 Treycovagnes,Jura-Nord vaudois,46.7738784,6.6092758,473,1205,1
@@ -240,48 +210,75 @@ Villars-le-Terroir,Gros-de-Vaud,46.6569364,6.6387429,637,1231,1
 Ogens,Gros-de-Vaud,46.7111659,6.7227737,261,1231,1
 Corseaux,Riviera-Pays d'Enhaut,46.4722747,6.8320071,2131,1115,3
 Rougemont,Riviera-Pays d'Enhaut,46.4899991,7.2106992,901,1115,2
+Gossens,Jura-Nord vaudois,46.738321,6.699106,113,1205,1
 Gimel,Morges,46.5088102,6.3070695,1921,1273,2
+Morcles,Aigle,46.2088952,7.0363659,300,1115,2
+Correvon,Gros-de-Vaud,46.7158142,6.7373666,108,1231,1
 Saint-Livres,Morges,46.5089259,6.3865062,538,1273,1
 Vulliens,Broye-Vully,46.6212858,6.7927903,438,1350,1
+Les Cullayes,Lavaux-Oron,46.5730628,6.7537317,628,985,1
+Sévery,Morges,46.5758446,6.4388219,223,1273,0
 La Chaux (Cossonay),Morges,46.61604,6.472555,425,1273,1
+Thierrens,Gros-de-Vaud,46.7034256,6.7550299,619,1231,1
 Arnex-sur-Nyon,Nyon,46.3759907,6.1913819,190,1461,1
+Combremont-le-Petit,Broye-Vully,46.7493162,6.8087604,368,1350,1
+Mézery-près-Donneloye,Jura-Nord vaudois,46.7484266,6.7262743,69,1205,1
 Essertines-sur-Rolle,Nyon,46.4924891,6.3170166,496,1461,1
+Chanéaz,Gros-de-Vaud,46.7295664,6.7417615,107,1231,1
+Seigneux,Broye-Vully,46.7273878,6.8786301,276,1350,1
+Malapalud,Gros-de-Vaud,46.621184,6.6411466,92,1231,1
+Denezy,Gros-de-Vaud,46.7216537,6.7845389,128,1231,1
 Villars-Sainte-Croix,Ouest lausannois,46.5675877,6.5616074,666,1074,1
 Jouxtens-Mézery,Lausanne,46.5532677,6.5980688,1397,1074,0
+Ferlens,Lavaux-Oron,46.5888578,6.7868326,331,985,1
 Pailly,Gros-de-Vaud,46.7013191,6.6745,521,1231,1
 Villeneuve,Aigle,46.3965712,6.9248129,5921,1115,2
 Echandens,Morges,46.534381,6.5410474,2235,1273,0
 L'Isle,Morges,46.6187582,6.411704,858,1273,2
 Noville,Aigle,46.3817112,6.8996176,907,1115,1
+Chapelle-sur-Moudon,Gros-de-Vaud,46.6691282,6.736023,405,1231,1
 Le Chenit,Jura-Nord vaudois,46.6046637,6.2337695,4297,1205,2
 Suscévaz,Jura-Nord vaudois,46.7642362,6.5780348,199,1205,1
+Cerniaz,Broye-Vully,46.7271483,6.896079,63,1350,1
+Montherod,Morges,46.4985819,6.3660069,439,1273,1
 Chavannes-le-Veyron,Morges,46.60645,6.4509017,127,1273,1
 Echichens,Morges,46.5265541,6.4978862,2550,1273,1
 Oulens-sous-Echallens,Gros-de-Vaud,46.6433334,6.5781518,532,1231,1
+Blonay,Riviera-Pays d'Enhaut,46.4650397,6.8951981,4695,1115,2
 Novalles,Jura-Nord vaudois,46.8284542,6.5956886,102,1205,1
+Riex,Lavaux-Oron,46.4935165,6.7358129,269,985,0
 Onnens,Jura-Nord vaudois,46.8391148,6.6884927,500,1205,0
 Mies,Nyon,46.3060321,6.1723029,1760,1461,0
 Fiez,Jura-Nord vaudois,46.8280744,6.6240029,412,1205,1
+Bussy-Chardonney,Morges,46.5291113,6.4419818,337,1273,0
 Founex,Nyon,46.3338174,6.1943733,3210,1461,1
 Mathod,Jura-Nord vaudois,46.7667908,6.5647296,552,1205,1
 Saint-Sulpice,Ouest lausannois,46.5100832,6.5580607,3378,1074,3
+Sassel,Broye-Vully,46.7766193,6.857103,148,1350,1
 Jongny,Riviera-Pays d'Enhaut,46.4785042,6.8414194,1472,1115,0
 Bursins,Nyon,46.4515535,6.2906369,522,1461,1
 Lignerolle,Jura-Nord vaudois,46.7407875,6.4559997,334,1205,2
 Marchissy,Nyon,46.4880255,6.2469182,348,1461,2
+Martherenges,Gros-de-Vaud,46.6609373,6.7532478,78,1231,1
 Cuarny,Jura-Nord vaudois,46.7700368,6.6884422,204,1205,1
 Bassins,Nyon,46.464053,6.2316394,832,1461,2
+Villars-Tiercelin,Gros-de-Vaud,46.6253713,6.7045253,343,1231,1
+Villars-Bramard,Broye-Vully,46.7191779,6.8989641,118,1350,1
+Peyres-Possens,Gros-de-Vaud,46.6625985,6.707191,140,1231,1
 Yens,Morges,46.518837,6.4180806,1328,1273,0
 Chevilly,Morges,46.642766,6.4771672,250,1273,1
 Vufflens-la-Ville,Gros-de-Vaud,46.5783726,6.5386727,1221,1231,0
 Givrins,Nyon,46.4289779,6.2017676,823,1461,0
 Vufflens-le-Château,Morges,46.5264596,6.4690909,829,1273,0
+Bioley-Orjulaz,Gros-de-Vaud,46.6211356,6.5984553,458,1231,1
+Romairon,Jura-Nord vaudois,46.8498613,6.639397,37,1205,2
 Valeyres-sous-Rances,Jura-Nord vaudois,46.7528278,6.5249548,585,1205,1
 Saubraz,Morges,46.5145609,6.3302084,392,1273,1
 Bremblens,Morges,46.5461677,6.51777,487,1273,1
 Ollon,Aigle,46.2972426,6.9950257,7426,1115,2
 Bougy-Villars,Morges,46.4787593,6.3545367,446,1273,1
 Chavannes-près-Renens,Ouest lausannois,46.5285212,6.5726698,7107,1074,3
+Forel-sur-Lucens,Broye-Vully,46.7282576,6.8222876,152,1350,1
 Mex,Gros-de-Vaud,46.5784364,6.5538256,662,1231,1
 Ballaigues,Jura-Nord vaudois,46.7305278,6.4132441,871,1205,2
 Romanel-sur-Morges,Morges,46.5564288,6.5101067,478,1273,1
@@ -292,111 +289,114 @@ Chavannes-de-Bogis,Nyon,46.3446425,6.1625796,1077,1461,1
 Dizy,Morges,46.6348867,6.4949896,222,1273,1
 Valeyres-sous-Montagny,Jura-Nord vaudois,46.7983693,6.6105655,641,1205,0
 Cronay,Jura-Nord vaudois,46.7571842,6.6966405,352,1205,1
+Epesses,Lavaux-Oron,46.4913262,6.7475919,332,985,0
 Champagne,Jura-Nord vaudois,46.8302611,6.6580976,1002,1205,1
+Huémoz,Aigle,46.2911726,7.0249718,450,1115,2
+Les Diablerets,Aigle,46.3511021,7.1566435,900,1115,2
+Villars-sur-Ollon,Aigle,46.2977636,7.055331,1091,1115,2
 Rueyres,Gros-de-Vaud,46.6937921,6.6926541,261,1231,1
+Saint-Cierges,Gros-de-Vaud,46.6903286,6.7349556,458,1231,1
+L'Auberson,Jura-Nord vaudois,46.8182795,6.4617052,917,1205,2
 Bière,Morges,46.5373773,6.3337235,1538,1273,2
 Mont-sur-Rolle,Nyon,46.470957,6.3365929,1796,1461,1
 Bursinel,Nyon,46.438423,6.3053467,472,1461,1
+Lavey-Village,Aigle,46.2200413,7.0181572,600,1115,2
 Grancy,Morges,46.5915221,6.4649462,410,1273,1
 Puidoux,Lavaux-Oron,46.5008111,6.7823914,2811,985,0
 Bullet,Jura-Nord vaudois,46.8309314,6.5546431,596,1205,2
 Vuiteboeuf,Jura-Nord vaudois,46.807388,6.5493754,473,1205,0
 Veytaux,Riviera-Pays d'Enhaut,46.4215725,6.9275648,843,1115,2
+Mézières,Lavaux-Oron,46.5957836,6.7705874,1193,985,1
 Daillens,Gros-de-Vaud,46.6202897,6.5487115,941,1231,1
-Epalinges,Lausanne,46.547327,6.6726245,9011,1074,3
-Corbeyrier,Aigle,46.3495001,6.9597544,401,1115,2
-Yvorne,Aigle,46.3317116,6.9586852,1036,1115,2
-Corcelles-près-Payerne,Broye-Vully,46.8331849,6.9614432,1644,1350,0
-Trey,Broye-Vully,46.769255,6.9251725,264,1350,1
-Grandcour,Broye-Vully,46.8718747,6.928747,851,1350,1
-Missy,Broye-Vully,46.8798752,6.9698165,336,1350,1
-Cudrefin,Broye-Vully,46.9560359,7.0183078,1516,1350,1
-Faoug,Broye-Vully,46.9057923,7.0740011,800,1350,0
-Moudon,Broye-Vully,46.6680664,6.8003478,5833,1350,0
-Avenches,Broye-Vully,46.879575,7.040941,3808,1350,0
-Champtauroz,Broye-Vully,46.760598,6.789151,100,1350,1
-Chexbres,Lavaux-Oron,46.4809505,6.7803021,2187,985,0
-Chavannes-le-Chêne,Jura-Nord vaudois,46.7768814,6.7780279,274,1205,1
-Bavois,Jura-Nord vaudois,46.6853078,6.5651634,921,1205,0
-Gryon,Aigle,46.2746628,7.063671,1267,1115,2
-L'Abbaye,Jura-Nord vaudois,46.6492716,6.3186169,1358,1205,2
-Froideville,Gros-de-Vaud,46.6012433,6.6816355,2107,1231,2
-Ballens,Morges,46.5542745,6.3750843,507,1273,0
-La Rippe,Nyon,46.3815133,6.1504437,1086,1461,2
-Lovatens,Broye-Vully,46.6918052,6.8641889,140,1350,1
-Le Pont,Jura-Nord vaudois,46.6683679,6.3256327,774,1205,2
-Le Sentier,Jura-Nord vaudois,46.606022,6.2314896,2336,1205,2
-Le Brassus,Jura-Nord vaudois,46.5839591,6.2123361,1840,1205,2
-L'Orient,Jura-Nord vaudois,46.6015355,6.2401453,534,1205,2
-Les Charbonnières,Jura-Nord vaudois,46.6663653,6.3149896,367,1205,2
-Les Plans-sur-Bex,Aigle,46.2570475,7.0903354,132,1115,2
-Palézieux,Lavaux-Oron,46.5550197,6.8304613,1158,985,0
-Villars-sous-Champvent,Jura-Nord vaudois,46.7861393,6.583353,45,1205,1
-Morcles,Aigle,46.2088952,7.0363659,282,1115,2
-Romairon,Jura-Nord vaudois,46.8498613,6.639397,37,1205,2
-Huémoz,Aigle,46.2911726,7.0249718,450,1115,2
-Les Diablerets,Aigle,46.3511021,7.1566435,900,1115,2
-Villars-sur-Ollon,Aigle,46.2977636,7.055331,1091,1115,2
-L'Auberson,Jura-Nord vaudois,46.8182795,6.4617052,917,1205,2
-Lavey-Village,Aigle,46.2200413,7.0181572,600,1115,2
+Oleyres,Broye-Vully,46.8534797,7.0384206,240,1350,1
 Lavey-les-Bains,Aigle,46.20671,7.0158161,450,1115,2
 La Forclaz,Aigle,46.3500014,7.0696309,100,1115,2
+Epalinges,Lausanne,46.547327,6.6726245,9011,1074,3
 Donatyre,Broye-Vully,46.8764735,7.0576639,600,1350,1
+Corbeyrier,Aigle,46.3495001,6.9597544,401,1115,2
 Les Avants,Riviera-Pays d'Enhaut,46.4536817,6.943758,450,1115,3
 Clarens,Riviera-Pays d'Enhaut,46.4411119,6.8930605,751,1115,3
 Caux,Riviera-Pays d'Enhaut,46.4324672,6.9377262,200,1115,3
 Territet,Riviera-Pays d'Enhaut,46.4249698,6.9246438,1500,1115,3
 Glion,Riviera-Pays d'Enhaut,46.4334429,6.9265504,500,1115,3
+Yvorne,Aigle,46.3317116,6.9586852,1036,1115,2
+Saint-Légier-La Chiésaz,Riviera-Pays d'Enhaut,46.4722777,6.8759701,4068,1115,2
+Corcelles-près-Payerne,Broye-Vully,46.8331849,6.9614432,1644,1350,0
+Sédeilles,Broye-Vully,46.7482527,6.9344024,144,1350,1
+Trey,Broye-Vully,46.769255,6.9251725,264,1350,1
+Grandcour,Broye-Vully,46.8718747,6.928747,851,1350,1
+Missy,Broye-Vully,46.8798752,6.9698165,336,1350,1
+Cudrefin,Broye-Vully,46.9560359,7.0183078,1516,1350,1
+Faoug,Broye-Vully,46.9057923,7.0740011,800,1350,0
+Bellerive,Broye-Vully,46.9237676,7.0231892,632,1350,1
+Brenles,Broye-Vully,46.6712187,6.8538119,144,1350,1
+Moudon,Broye-Vully,46.6680664,6.8003478,5833,1350,0
+Avenches,Broye-Vully,46.879575,7.040941,3808,1350,0
+Montmagny,Broye-Vully,46.9265535,7.0105362,178,1350,1
+Villars-le-Grand,Broye-Vully,46.9055732,6.9902145,275,1350,1
+Champtauroz,Broye-Vully,46.760598,6.789151,100,1350,1
 Rossinière,Riviera-Pays d'Enhaut,46.4675176,7.083061,543,1115,2
+Chexbres,Lavaux-Oron,46.4809505,6.7803021,2187,985,0
+Cully,Lavaux-Oron,46.4883249,6.7296804,1785,985,0
 Apples,Morges,46.5516727,6.4267658,1440,1273,0
-Vugelles-La Mothe,Jura-Nord vaudois,46.81927,6.5676637,122,1205,2
 Dommartin,Gros-de-Vaud,46.6491462,6.7020257,274,1231,1
+Chavannes-le-Chêne,Jura-Nord vaudois,46.7768814,6.7780279,274,1205,1
+Bavois,Jura-Nord vaudois,46.6853078,6.5651634,921,1205,0
 Arzier-Le Muids,Nyon,46.4599808,6.208069,2656,1461,2
-Oron-le-Châtel,Lavaux-Oron,46.5756183,6.8424561,233,985,0
-Chesalles-sur-Oron,Lavaux-Oron,46.5760782,6.8526495,148,985,1
-Essert-sous-Champvent,Jura-Nord vaudois,46.7924911,6.5841572,132,1205,1
-Servion,Lavaux-Oron,46.5767948,6.7845039,2078,985,1
-Les Thioleyres,Lavaux-Oron,46.5406228,6.8121121,172,985,1
-Chavannes-sur-Moudon,Broye-Vully,46.6571671,6.8092169,197,1350,1
-Ferreyres,Morges,46.6577788,6.4860425,222,1273,1
-Villars-Burquin,Jura-Nord vaudois,46.8470936,6.6279243,504,1205,2
-Pizy,Morges,46.4923283,6.3522999,65,1273,1
-Provence,Jura-Nord vaudois,46.8914636,6.7270271,368,1205,2
-Reverolle,Morges,46.5416336,6.4384876,323,1273,0
-Rances,Jura-Nord vaudois,46.7602787,6.5300272,419,1205,1
-Châtillens,Lavaux-Oron,46.5678208,6.8149745,365,985,0
-Peney-le-Jorat,Gros-de-Vaud,46.6309179,6.7280379,312,1231,1
-Savigny,Lavaux-Oron,46.5384249,6.7316194,3084,985,1
-Maracon,Lavaux-Oron,46.5500232,6.8727444,416,985,1
-Château-D'Oex,Riviera-Pays d'Enhaut,46.4738413,7.1303012,2949,1115,2
-Leysin,Aigle,46.3438701,7.0148403,4000,1115,2
-Naz,Gros-de-Vaud,46.6580065,6.6956473,137,1231,1
-Les Rasses,Jura-Nord vaudois,46.8292221,6.5402244,574,1205,2
-Vaugondry,Jura-Nord vaudois,46.8466335,6.6369496,39,1205,2
-La Tuilière,Jura-Nord vaudois,46.7138454,6.6995623,10,1205,1
-Le Muids,Nyon,46.4542786,6.2196398,83,1461,2
-Salavaux,Broye-Vully,46.9171744,7.0221,607,1350,1
-Antagnes,Aigle,46.2767825,7.0129283,304,1115,2
-Mollie-Margot,Lavaux-Oron,46.5566174,6.7506448,389,985,1
-La Claie-aux-Moines,Lavaux-Oron,46.5411119,6.7043595,349,985,1
-Vers l'Église,Aigle,46.3539017,7.1316798,17,1115,2
-Chesières,Aigle,46.3012904,7.0425766,1868,1115,2
-La Vraconnaz,Jura-Nord vaudois,46.8414921,6.4831724,47,1205,2
-La Chaux de-Ste-Croix,Jura-Nord vaudois,46.830687,6.4782064,107,1205,2
-Le Sépey,Aigle,46.3611362,7.051225,175,1115,2
-Fenalet-sur-Bex,Aigle,46.2717426,7.0266253,73,1115,2
-Peney,Jura-Nord vaudois,46.8026753,6.561092,94,1205,1
-Brent,Riviera-Pays d'Enhaut,46.4579773,6.901682,900,1115,3
-Chernex,Riviera-Pays d'Enhaut,46.4456342,6.9088409,1968,1115,3
-Les Posses-sur-Bex,Aigle,46.2712905,7.0471292,48,1115,2
-Epautheyres,Gros-de-Vaud,46.7388257,6.6432671,146,1231,1
-Le Day,Jura-Nord vaudois,46.7163872,6.3994595,43,1205,2
-Aran,Lavaux-Oron,46.4979717,6.7101518,38,985,1
-Les Bioux,Jura-Nord vaudois,46.6216443,6.2716224,202,1205,2
-Les Moulins,Riviera-Pays d'Enhaut,46.4606024,7.107087,211,1115,2
-Saint-Triphon,Aigle,46.2926382,6.9784632,474,1115,2
-Les Tuileries,Jura-Nord vaudois,46.7984514,6.6264686,376,1205,0
-Crebelley,Aigle,46.364681,6.9017862,37,1115,1
-Chailly,Riviera-Pays d'Enhaut,46.454379,6.8923334,2209,1115,3
-Allens,Morges,46.600124,6.5100485,53,1273,1
-Arveyes,Aigle,46.2905528,7.061769,351,1115,2
+Gryon,Aigle,46.2746628,7.063671,1267,1115,2
+Chabrey,Broye-Vully,46.9264329,6.9812292,267,1350,1
+Constantine,Broye-Vully,46.9181932,7.0115066,327,1350,1
+L'Abbaye,Jura-Nord vaudois,46.6492716,6.3186169,1358,1205,2
+Froideville,Gros-de-Vaud,46.6012433,6.6816355,2107,1231,2
+Ballens,Morges,46.5542745,6.3750843,507,1273,0
+La Rippe,Nyon,46.3815133,6.1504437,1086,1461,2
+Lovatens,Broye-Vully,46.6918052,6.8641889,140,1350,1
+Oron-le-Châtel,Lavaux-Oron,46.5756183,6.8424561,4903,985,0
+Chesalles-sur-Oron,Lavaux-Oron,46.5760782,6.8526495,6601,985,1
+Grand-Mont,Lausanne,46.5624038,6.6316041,797,1074,1
+Essert-sous-Champvent,Jura-Nord vaudois,46.7924911,6.5841572,830,1205,1
+Servion,Lavaux-Oron,46.5767948,6.7845039,2887,985,1
+Les Thioleyres,Lavaux-Oron,46.5406228,6.8121121,2570,985,1
+Chavannes-sur-Moudon,Broye-Vully,46.6571671,6.8092169,2860,1350,1
+Ferreyres,Morges,46.6577788,6.4860425,648,1273,1
+Villars-Burquin,Jura-Nord vaudois,46.8470936,6.6279243,402,1205,2
+Pizy,Morges,46.4923283,6.3522999,897,1273,1
+Provence,Jura-Nord vaudois,46.8914636,6.7270271,3181,1205,2
+Reverolle,Morges,46.5416336,6.4384876,3850,1273,0
+Rances,Jura-Nord vaudois,46.7602787,6.5300272,700,1205,1
+Châtillens,Lavaux-Oron,46.5678208,6.8149745,4000,985,0
+Peney-le-Jorat,Gros-de-Vaud,46.6309179,6.7280379,1500,1231,1
+Savigny,Lavaux-Oron,46.5384249,6.7316194,586,985,1
+Vaugondry,Jura-Nord vaudois,46.8466335,6.6369496,367,1205,2
+Maracon,Lavaux-Oron,46.5500232,6.8727444,795,985,1
+Château-D'Oex,Riviera-Pays d'Enhaut,46.4738413,7.1303012,437,1115,2
+Leysin,Aigle,46.3438701,7.0148403,526,1115,2
+La Tuilière,Jura-Nord vaudois,46.7138454,6.6995623,321,1205,1
+Le Muids,Nyon,46.4542786,6.2196398,600,1461,2
+Naz,Gros-de-Vaud,46.6580065,6.6956473,4386,1231,1
+Les Rasses,Jura-Nord vaudois,46.8292221,6.5402244,1728,1205,2
+Salavaux,Broye-Vully,46.9171744,7.0221,334,1350,1
+Antagnes,Aigle,46.2767825,7.0129283,4133,1115,2
+Mollie-Margot,Lavaux-Oron,46.5566174,6.7506448,7364,985,1
+La Claie-aux-Moines,Lavaux-Oron,46.5411119,6.7043595,1416,985,1
+Vers l'Église,Aigle,46.3539017,7.1316798,3575,1115,2
+Chesières,Aigle,46.3012904,7.0425766,310,1115,2
+La Vraconnaz,Jura-Nord vaudois,46.8414921,6.4831724,377,1205,2
+La Chaux de-Ste-Croix,Jura-Nord vaudois,46.830687,6.4782064,2490,1205,2
+Le Sépey,Aigle,46.3611362,7.051225,3279,1115,2
+Fenalet-sur-Bex,Aigle,46.2717426,7.0266253,618,1115,2
+Peney,Jura-Nord vaudois,46.8026753,6.561092,193,1205,1
+Brent,Riviera-Pays d'Enhaut,46.4579773,6.901682,1601,1115,3
+Chernex,Riviera-Pays d'Enhaut,46.4456342,6.9088409,123,1115,3
+Les Posses-sur-Bex,Aigle,46.2712905,7.0471292,389,1115,2
+Epautheyres,Gros-de-Vaud,46.7388257,6.6432671,328,1231,1
+Le Day,Jura-Nord vaudois,46.7163872,6.3994595,663,1205,2
+Aran,Lavaux-Oron,46.4979717,6.7101518,1114,985,1
+Les Bioux,Jura-Nord vaudois,46.6216443,6.2716224,3409,1205,2
+Les Moulins,Riviera-Pays d'Enhaut,46.4606024,7.107087,899,1115,2
+Saint-Triphon,Aigle,46.2926382,6.9784632,169,1115,2
+Les Tuileries,Jura-Nord vaudois,46.7984514,6.6264686,701,1205,0
+Crebelley,Aigle,46.364681,6.9017862,471,1115,1
+Chailly,Riviera-Pays d'Enhaut,46.454379,6.8923334,249,1115,3
+Allens,Morges,46.600124,6.5100485,386,1273,1
+Arveyes,Aigle,46.2905528,7.061769,337,1115,2

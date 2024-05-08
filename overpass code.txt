@@ -1,0 +1,14 @@
+area["name"="Vaud"]["boundary"="administrative"]->.vaud;
+
+(
+  node["place"="village"](area.vaud);
+);
+
+// print results
+out body;
+>;
+out skel qt;
+
+// On supprime "place"="city" et "place"="town" car zone urbaine. On enlève aussi "place"="hamlet" car trop petit. On garde uniquement "place"="village".
+
+
