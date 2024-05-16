@@ -1,37 +1,29 @@
 <script>
+
 export default {
 	/********************************
 	 * Settings
 	 ********************************/
 	props: {
-		mapData: Object,
+		data: Object,
 	},
-
-	// data() {
-	// 	return {
-	// 		startMarker: null,
-	// 		endMarker: null,
-	// 		route: null,
-	// 		isOpen: true,
-	// 	};
-	// },
 
 	/********************************
 	 * Initialization
 	 ********************************/
 	watch: {
-		'mapData.startMarker': {
+		'data.startMarker': {
 			handler: function (newVal, oldVal) {
 				console.log('startMarker changed:', newVal);
 			},
 			// deep: true,
 		},
-		'mapData.endMarker': {
+		'data.endMarker': {
 			handler: function (newVal, oldVal) {
 				console.log('endMarker changed:', newVal);
 			},
 		},
-		'mapData.route': {
+		'data.route': {
 			handler: function (newVal, oldVal) {
 				console.log('route changed:', newVal);
 			},
@@ -42,17 +34,46 @@ export default {
 
 <template>
 	<section id="informations"
-				:class="{ isOpen: mapData.startMarker !== null }">
+				:class="{ isOpen: data.startMarker !== null }">
+
 		<div id="start-marker"
 			  class="marker"
-			  v-if="mapData.startMarker">
-			<h2 class="title">{{ mapData.startMarker.options.title }}</h2>
+			  v-if="data.startMarker">
+			<h2 class="title">{{ data.startMarker.options.name }}</h2>
+			<p>{{ data.startMarker.options.lat }} {{ data.startMarker.options.lng }}</p>
+			<ul>
+				<li>
+					Population: {{ data.startMarker.options.population }}
+				</li>
+				<li>
+					Energie solaire: {{ data.startMarker.options.energy }}
+				</li>
+			</ul>
 		</div>
+
 		<div id="end-marker"
 			  class="marker"
-			  v-if="mapData.endMarker">
-			<h2 class="title">{{ mapData.endMarker.options.title }}</h2>
+			  v-if="data.endMarker">
+			<h2 class="title">{{ data.endMarker.options.name }}</h2>
+			<p>{{ data.endMarker.options.lat }} {{ data.endMarker.options.lng }}</p>
+			<ul>
+				<li>
+					Population: {{ data.endMarker.options.population }}
+				</li>
+				<li>
+					Energie solaire: {{ data.endMarker.options.energy }}
+				</li>
+			</ul>
 		</div>
+
+		<div id="route">
+			<h2 class="title">Route</h2>
+			<ul>
+				<li v-if="data.route">Distance: {{ data.route.features[0].properties.summary.distance }} mètres</li>
+				<li v-if="data.route">Durée: {{ data.route.features[0].properties.summary.duration / 60 }} minutes</li>
+			</ul>
+		</div>
+
 	</section>
 </template>
 
@@ -61,12 +82,22 @@ export default {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 33vw;
+	width: 500px;
 	height: 100vh;
+	padding: 20px;
 	z-index: 1000;
 	background: white;
 	transform: translateX(100%);
 	transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+	#informations {
+		top: auto;
+		bottom: 0;
+		width: 100vw;
+		height: 50vh;
+	}
 }
 
 #informations.isOpen {

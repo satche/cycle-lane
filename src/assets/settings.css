@@ -2,4 +2,4 @@
  * Settings
  ********************************/
 
- @import url("./node_modules/leaflet/dist/leaflet.css");
+ @import url("/node_modules/leaflet/dist/leaflet.css")

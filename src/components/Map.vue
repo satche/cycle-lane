@@ -27,12 +27,12 @@ export default {
 	async mounted() {
 		this.direction = new Openrouteservice.Directions({ api_key: apiKey })
 
-		let response = await fetch("./data/Data_communes_28features.csv");
+		let response = await fetch("./data/Data_villages_vaud.csv");
 		this.file = await response.text();
 
 		this.map = L.map(this.$refs.map, {
-			center: [46.519962, 6.633597], // Centered on Lausanne, VD
-			zoom: 14,
+			center: [46.569962, 6.733597], // Centered on Lausanne, VD
+			zoom: 10,
 		});
 
 		L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -56,11 +56,16 @@ export default {
 		/* Display marker on map
 		 ********************************/
 		displayMarkerOnMap(data) {
-			let name = data["Libellé"];
-			let lat = data["Latitude"];
-			let lng = data["Longitude"];
+			let markerData = {
+				name: data["Nom"],
+				lat: data["Latitude"],
+				lng: data["Longitude"],
+				population: data["Population"],
+				energy: data["Energie solaire"]
+			}
 
-			if (lat === undefined || lng === undefined) {
+
+			if (markerData.lat === undefined || markerData.lng === undefined) {
 				return;
 			}
 
@@ -71,13 +76,16 @@ export default {
 					"https://api.iconify.design/material-symbols:location-on.svg?color=%23000000",
 			});
 
-			L.marker([lat, lng], {
-				title: name,
+			L.marker([markerData.lat, markerData.lng], {
+				...markerData,
 				icon: icon,
 				riseOnHover: true,
 			})
 				.addTo(this.map)
 				.on("click", this.onMarkerClick);
+
+			// On map click event
+			this.map.on("click", this.onMapClick);
 		},
 
 		/* Marker click event
@@ -138,6 +146,23 @@ export default {
 					this.map.removeLayer(layer);
 				}
 			});
+		},
+
+		/* Map click event
+		 ********************************/
+		onMapClick(e) {
+
+			if (this.endMarker == undefined) {
+				return;
+			}
+
+			// Unselect all if click outside markers
+			this.unselectAllMarkers();
+			this.$emit('update-map-data', {
+				startMarker: null,
+				endMarker: null,
+				route: null
+			})
 		},
 
 		/* Calculate route

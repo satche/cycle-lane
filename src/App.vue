@@ -17,12 +17,14 @@ const updateMapData = (data) => {
 <template>
 
   <Map @update-map-data="updateMapData" />
-  <Informations :mapData="mapData" />
+  <Informations :data="mapData" />
 
 </template>
 
 <style>
 body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  overflow: hidden;
 }
 </style>
