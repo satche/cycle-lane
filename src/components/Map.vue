@@ -158,6 +158,8 @@ export default {
 						[this.endMarker.getLatLng().lng, this.endMarker.getLatLng().lat],
 					],
 					profile: "cycling-regular",
+					elevation: "true",
+					"extra_info": ["steepness"],
 					format: "geojson",
 				})
 				.catch(error => {
