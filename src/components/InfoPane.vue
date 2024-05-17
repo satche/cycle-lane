@@ -1,0 +1,159 @@
+<script>
+import InfoMarker from './InfoMarker.vue';
+import Route from './InfoRoute.vue';
+
+export default {
+
+	props: {
+		data: Object,
+	},
+
+	components: {
+		InfoMarker,
+		Route,
+	},
+
+	data() {
+		return {
+			isOpen: false,
+		};
+	},
+
+	watch: {
+		// Open the info pane when a start marker is set
+		'data.startMarker': {
+			handler: function (newVal, oldVal) {
+				if (newVal !== null) {
+					this.isOpen = true;
+				}
+			},
+		},
+	},
+};
+</script>
+
+<template>
+	<section id="infoPane"
+				:class="{ isOpen: isOpen }">
+
+		<button class="infoPane_toggleButton"
+				  aria-label="Open information pane"
+				  @click="isOpen = !isOpen">
+			<img src="@/assets/icons/chevron-left.svg"
+				  alt="" />
+		</button>
+
+		<div id="infoPane_markers">
+			<InfoMarker :data="data.startMarker" />
+			<div class="separator">……</div>
+			<InfoMarker :data="data.endMarker" />
+		</div>
+
+		<hr>
+
+		<Route :data="data.route" />
+
+	</section>
+</template>
+
+<style>
+#infoPane {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 500px;
+	height: 100vh;
+	padding: 40px;
+	z-index: 1000;
+	background: white;
+	transform: translateX(100%);
+	transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+	#info-pane {
+		top: auto;
+		bottom: 0;
+		width: 100vw;
+		height: 50vh;
+	}
+}
+
+.infoPane_toggleButton {
+	position: absolute;
+	top: 0;
+	left: -20px;
+	width: 40px;
+	height: 100%;
+	padding: 0;
+	border: none;
+	background: white;
+	transition: transform 0.2s ease-out;
+
+	&>img {
+		position: absolute;
+		top: calc(50% - 13px);
+		left: -20px;
+		z-index: 10;
+	}
+
+	&:hover {
+		cursor: pointer;
+		transform: translateX(-10px);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: calc(50% - 25px);
+		width: 30px;
+		height: 60px;
+		background: white;
+		border-radius: 10px 0 0 10px;
+		transform: translate(-50%, -50%);
+	}
+}
+
+#infoPane.isOpen {
+	transform: translateX(0);
+
+	& .infoPane_toggleButton {
+		width: 0;
+		left: 0;
+		&:hover {
+			transform: translateX(0);
+		}
+		&::after {
+			left: -5px;
+		}
+		&>img {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+#infoPane_markers {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0px;
+	& .separator {
+		width: 50px;
+		padding: 0 15px;
+		height: 100%;
+		text-align: center;
+		align-self: center;
+		color: #919191;
+	}
+}
+
+#infoPane hr {
+	margin: 10px 0;
+	border: 1px solid #e0e0e0;
+}
+
+.title {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+</style>

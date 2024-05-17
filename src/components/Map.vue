@@ -7,9 +7,6 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 export default {
 
-	/********************************
-	 * Settings
-	 ********************************/
 	data() {
 		return {
 			map: null,
@@ -21,17 +18,18 @@ export default {
 		};
 	},
 
-	/********************************
-	 * Initialization
-	 ********************************/
+
+	/**
+	 * Initialize the map and fetch the marker data
+	 * Display each marker on the map
+	 */
 	async mounted() {
+		// Init API
 		this.direction = new Openrouteservice.Directions({ api_key: apiKey })
 
-		let response = await fetch("./data/Data_villages_vaud.csv");
-		this.file = await response.text();
-
+		// Init map
 		this.map = L.map(this.$refs.map, {
-			center: [46.569962, 6.733597], // Centered on Lausanne, VD
+			center: [46.569962, 6.733597], // Centered on Vaud, Switzerland
 			zoom: 10,
 		});
 
@@ -39,22 +37,23 @@ export default {
 			maxZoom: 19,
 		}).addTo(this.map);
 
-		Papa.parse(this.file, {
-			header: true,
-			worker: true, // Don't bog down the main thread if its a big file
-			step: (result) => {
-				this.displayMarkerOnMap(result.data);
-			},
+		// Fetch marker data
+		let response = await fetch("./data/Data_villages_vaud.json");
+		this.data = await response.json();
+
+		// Display each marker on the map
+		this.data.forEach((data) => {
+			this.displayMarkerOnMap(data);
 		});
 	},
 
-	/********************************
-	 * Methods
-	 ********************************/
 	methods: {
 
-		/* Display marker on map
-		 ********************************/
+		/**
+		 * Display a marker on the map with latitude and longitude coordinates
+		 * Include additional data in the object
+		 * @param {data} data JSON data containing the markers informations
+		 */
 		displayMarkerOnMap(data) {
 			let markerData = {
 				name: data["Nom"],
@@ -63,7 +62,6 @@ export default {
 				population: data["Population"],
 				energy: data["Energie solaire"]
 			}
-
 
 			if (markerData.lat === undefined || markerData.lng === undefined) {
 				return;
@@ -83,9 +81,6 @@ export default {
 			})
 				.addTo(this.map)
 				.on("click", this.onMarkerClick);
-
-			// On map click event
-			this.map.on("click", this.onMapClick);
 		},
 
 		/* Marker click event
@@ -138,6 +133,7 @@ export default {
 		unselectAllMarkers() {
 			this.startMarker = undefined;
 			this.endMarker = undefined;
+			this.route = undefined;
 			this.map.eachLayer((layer) => {
 				if (layer instanceof L.Marker) {
 					layer.setOpacity(0.3);
@@ -146,23 +142,6 @@ export default {
 					this.map.removeLayer(layer);
 				}
 			});
-		},
-
-		/* Map click event
-		 ********************************/
-		onMapClick(e) {
-
-			if (this.endMarker == undefined) {
-				return;
-			}
-
-			// Unselect all if click outside markers
-			this.unselectAllMarkers();
-			this.$emit('update-map-data', {
-				startMarker: null,
-				endMarker: null,
-				route: null
-			})
 		},
 
 		/* Calculate route

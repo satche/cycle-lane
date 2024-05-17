@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Map from './components/Map.vue'
-import Informations from './components/Informations.vue'
+import InfoPane from './components/InfoPane.vue'
 
 const mapData = ref({
   startMarker: null,
@@ -17,7 +17,7 @@ const updateMapData = (data) => {
 <template>
 
   <Map @update-map-data="updateMapData" />
-  <Informations :data="mapData" />
+  <InfoPane :data="mapData" />
 
 </template>
 
