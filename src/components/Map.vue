@@ -31,11 +31,15 @@ export default {
 		this.map = L.map(this.$refs.map, {
 			center: [46.569962, 6.733597], // Centered on Vaud, Switzerland
 			zoom: 10,
+
 		});
 
-		L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-			maxZoom: 19,
+		// Useful list of tile providers:
+		// https://leaflet-extras.github.io/leaflet-providers/preview/
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+			maxZoom: 22
 		}).addTo(this.map);
+
 
 		// Fetch marker data
 		let response = await fetch("./data/Data_villages_vaud.json");
@@ -60,18 +64,27 @@ export default {
 				lat: data["Latitude"],
 				lng: data["Longitude"],
 				population: data["Population"],
-				energy: data["Energie solaire"]
+				energy: data["Energie solaire"],
+				cluster: data["Cluster"],
 			}
 
 			if (markerData.lat === undefined || markerData.lng === undefined) {
 				return;
 			}
 
+			// Define marker's color according to cluster
+			let colors = [
+				"e61038", // Train stations (red)
+				"4ab4d5", // Rural areas (green)
+				"717e94", // Mountain areas (gray)
+				"8f61ae" // City centers (purple)
+			];
+
 			// Add marker to map
 			let icon = L.icon({
-				iconSize: [35, 35],
+				iconSize: [25, 25],
 				iconUrl:
-					"https://api.iconify.design/material-symbols:location-on.svg?color=%23000000",
+					`https://api.iconify.design/material-symbols:location-on.svg?color=%23${colors[markerData.cluster]}`,
 			});
 
 			L.marker([markerData.lat, markerData.lng], {
@@ -136,7 +149,7 @@ export default {
 			this.route = undefined;
 			this.map.eachLayer((layer) => {
 				if (layer instanceof L.Marker) {
-					layer.setOpacity(0.3);
+					layer.setOpacity(0.4);
 				}
 				if (layer instanceof L.Polyline) {
 					this.map.removeLayer(layer);
@@ -181,9 +194,9 @@ export default {
 
 			let line = L.geoJSON(this.route.features[0].geometry, {
 				style: {
-					color: "blue",
-					weight: 5,
-					opacity: 0.7,
+					color: "#ff0066",
+					weight: 4,
+					opacity: 0.6,
 				},
 			});
 
