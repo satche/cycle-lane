@@ -140,7 +140,7 @@ export default {
 			this.endMarker = undefined;
 			this.map.eachLayer((layer) => {
 				if (layer instanceof L.Marker) {
-					layer.setOpacity(0.5);
+					layer.setOpacity(0.3);
 				}
 				if (layer instanceof L.Polyline) {
 					this.map.removeLayer(layer);
