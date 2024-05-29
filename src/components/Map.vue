@@ -1,6 +1,10 @@
+<template>
+	<section id="map"
+				ref="map"></section>
+</template>
+
 <script>
 import L from "leaflet";
-import Papa from "papaparse";
 import Openrouteservice from "openrouteservice-js";
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -205,11 +209,6 @@ export default {
 	}
 };
 </script>
-
-<template>
-	<section id="map"
-				ref="map"></section>
-</template>
 
 <style scoped>
 #map {

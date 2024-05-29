@@ -1,25 +1,46 @@
-<script setup>
+<template>
+  <Map @update-map-data="updateMapData" />
+  <InfoPane :data="mapData"
+            @generate-report="showReport = $event" />
+  <Report v-if="showReport"
+          @close-report="showReport = false" />
+</template>
+
+<script>
 import { ref } from 'vue'
 import Map from './components/Map.vue'
 import InfoPane from './components/InfoPane.vue'
+import Report from './components/Report.vue'
 
-const mapData = ref({
-  startMarker: null,
-  endMarker: null,
-  route: null,
-})
+export default {
 
-const updateMapData = (data) => {
-  mapData.value = { ...mapData.value, ...data };
-};
+  components: {
+    Map,
+    InfoPane,
+    Report
+  },
+
+  setup() {
+    const mapData = ref({
+      startMarker: null,
+      endMarker: null,
+      route: null,
+    })
+
+    const showReport = ref(false);
+
+    const updateMapData = (data) => {
+      mapData.value = { ...mapData.value, ...data };
+    };
+
+    return {
+      mapData,
+      showReport,
+      updateMapData,
+    }
+  }
+}
 </script>
-
-<template>
-
-  <Map @update-map-data="updateMapData" />
-  <InfoPane :data="mapData" />
-
-</template>
 
 <style>
 body {

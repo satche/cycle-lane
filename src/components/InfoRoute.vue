@@ -5,16 +5,6 @@ export default {
 		data: Object,
 	},
 
-	watch: {
-		data: {
-			handler: function (newVal, oldVal) {
-				if (newVal !== null) {
-					console.log(newVal);
-				}
-			},
-		},
-	},
-
 	computed: {
 		formattedDuration() {
 			if (!this.data) return '';

@@ -1,37 +1,3 @@
-<script>
-import InfoMarker from './InfoMarker.vue';
-import Route from './InfoRoute.vue';
-
-export default {
-
-	props: {
-		data: Object,
-	},
-
-	components: {
-		InfoMarker,
-		Route,
-	},
-
-	data() {
-		return {
-			isOpen: false,
-		};
-	},
-
-	watch: {
-		// Open the info pane when a start marker is set
-		'data.startMarker': {
-			handler: function (newVal, oldVal) {
-				if (newVal !== null) {
-					this.isOpen = true;
-				}
-			},
-		},
-	},
-};
-</script>
-
 <template>
 	<section id="infoPane"
 				:class="{ isOpen: isOpen }">
@@ -53,8 +19,52 @@ export default {
 
 		<Route :data="data.route" />
 
+		<button @click="generateReport"
+				  v-if="data.startMarker && data.endMarker">
+			Generate Report
+		</button>
+
 	</section>
 </template>
+
+<script>
+import InfoMarker from './InfoMarker.vue';
+import Route from './InfoRoute.vue';
+
+export default {
+	props: {
+		data: Object,
+	},
+
+	components: {
+		InfoMarker,
+		Route,
+	},
+
+	data() {
+		return {
+			isOpen: false,
+		};
+	},
+
+	watch: {
+		// Open the info pane when the first marker is selected
+		'data.startMarker': {
+			handler: function (newVal, oldVal) {
+				if (newVal !== null) {
+					this.isOpen = true;
+				}
+			},
+		},
+	},
+
+	methods: {
+		generateReport() {
+			this.$emit('generate-report', true);
+		},
+	},
+};
+</script>
 
 <style>
 #infoPane {
@@ -88,12 +98,13 @@ export default {
 	padding: 0;
 	border: none;
 	background: white;
+	border: 1px solid black;
 	transition: transform 0.2s ease-out;
 
 	&>img {
 		position: absolute;
 		top: calc(50% - 13px);
-		left: -20px;
+		left: -25px;
 		z-index: 10;
 	}
 
@@ -106,10 +117,12 @@ export default {
 		content: '';
 		position: absolute;
 		top: 50%;
-		left: calc(50% - 25px);
-		width: 30px;
+		left: calc(50% - 32px);
+		width: 25px;
 		height: 60px;
 		background: white;
+		border: 1px solid black;
+		border-right: 0;
 		border-radius: 10px 0 0 10px;
 		transform: translate(-50%, -50%);
 	}
@@ -121,12 +134,15 @@ export default {
 	& .infoPane_toggleButton {
 		width: 0;
 		left: 0;
+
 		&:hover {
 			transform: translateX(0);
 		}
+
 		&::after {
-			left: -5px;
+			left: -12px;
 		}
+
 		&>img {
 			transform: rotate(180deg);
 		}
@@ -137,6 +153,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 0px;
+
 	& .separator {
 		width: 50px;
 		padding: 0 15px;
