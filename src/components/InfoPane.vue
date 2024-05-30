@@ -60,7 +60,14 @@ export default {
 
 	methods: {
 		generateReport() {
-			this.$emit('generate-report', true);
+			const reportData = {
+				routeLength: this.data.route.features[0].properties.summary.distance,
+				routeWidth: 3,
+				routeTickness: 0.12,
+				materialVolumeMass: 2.5,
+				materialImpact: 0.5,
+			};
+			this.$emit('generate-report', reportData);
 		},
 	},
 };

@@ -1,9 +1,10 @@
 <template>
   <Map @update-map-data="updateMapData" />
   <InfoPane :data="mapData"
-            @generate-report="showReport = $event" />
-  <Report v-if="showReport"
-          @close-report="showReport = false" />
+            @generate-report="handleGenerateReport" />
+  <Report v-if="isOpen"
+          :data="reportData"  
+          @close-report="isOpen = false" />
 </template>
 
 <script>
@@ -27,7 +28,14 @@ export default {
       route: null,
     })
 
-    const showReport = ref(false);
+    const reportData = ref(null);
+
+    const isOpen = ref(false);
+
+    const handleGenerateReport = (data) => {
+      reportData.value = data;
+      isOpen.value = true;
+    };
 
     const updateMapData = (data) => {
       mapData.value = { ...mapData.value, ...data };
@@ -35,8 +43,10 @@ export default {
 
     return {
       mapData,
-      showReport,
+      isOpen,
+      reportData,
       updateMapData,
+      handleGenerateReport,
     }
   }
 }

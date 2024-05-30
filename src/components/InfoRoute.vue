@@ -1,30 +1,3 @@
-<script>
-
-export default {
-	props: {
-		data: Object,
-	},
-
-	computed: {
-		formattedDuration() {
-			if (!this.data) return '';
-			let durationInMinutes = this.data.features[0].properties.summary.duration / 60;
-			let hours = Math.floor(durationInMinutes / 60);
-			let minutes = Math.round(durationInMinutes % 60);
-			return hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
-		},
-
-		formattedDistance() {
-			if (!this.data) return '';
-			let distance = this.data.features[0].properties.summary.distance;
-			let distanceInKm = distance / 1000;
-			let distanceRounded = Math.floor(distanceInKm * 100) / 100;
-			return `${distanceRounded}km`;
-		},
-	},
-};
-</script>
-
 <template>
 	<div id="route"
 		  v-if="data">
@@ -52,6 +25,33 @@ export default {
 		</ul>
 	</div>
 </template>
+
+<script>
+
+export default {
+	props: {
+		data: Object,
+	},
+
+	computed: {
+		formattedDuration() {
+			if (!this.data) return '';
+			let durationInMinutes = this.data.features[0].properties.summary.duration / 60;
+			let hours = Math.floor(durationInMinutes / 60);
+			let minutes = Math.round(durationInMinutes % 60);
+			return hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
+		},
+
+		formattedDistance() {
+			if (!this.data) return '';
+			let distance = this.data.features[0].properties.summary.distance;
+			let distanceInKm = distance / 1000;
+			let distanceRounded = Math.floor(distanceInKm * 100) / 100;
+			return `${distanceRounded}km`;
+		},
+	},
+};
+</script>
 
 <style scoped>
 #route {

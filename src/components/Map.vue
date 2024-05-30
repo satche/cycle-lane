@@ -100,8 +100,6 @@ export default {
 				.on("click", this.onMarkerClick);
 		},
 
-		/* Marker click event
-		 ********************************/
 		onMarkerClick(e) {
 
 			// Set start marker
@@ -139,14 +137,10 @@ export default {
 			})
 		},
 
-		/* Marker select
-		 ********************************/
 		selectThisMarker(marker) {
 			marker.setOpacity(1);
 		},
 
-		/* Unselect all markers
-		 ********************************/
 		unselectAllMarkers() {
 			this.startMarker = undefined;
 			this.endMarker = undefined;
@@ -161,8 +155,6 @@ export default {
 			});
 		},
 
-		/* Calculate route
-		 ********************************/
 		async calculateRoute() {
 			if (this.startMarker == undefined || this.endMarker == undefined) {
 				return;
@@ -189,8 +181,6 @@ export default {
 			})
 		},
 
-		/* Display route
-			 ********************************/
 		displayRoute() {
 			if (this.route == undefined) {
 				return;
