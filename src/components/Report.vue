@@ -6,29 +6,53 @@
 			<div class="content"
 				  @click.stop>
 				<strong class="title">Rapport</strong>
+
+				<div>
+					<label for="materialVolumeMass">Masse volumique du béton:</label>
+					<input type="number"
+							 v-model="materialVolumeMass"
+							 @input="refreshReport"
+							 :min="0"
+							 :max="10"
+							 :step="0.1">
+				</div>
+
+				<div>
+					<label for="materialImpact">Impacte béton:</label>
+					<input type="number"
+							 v-model="materialImpact"
+							 @input="refreshReport"
+							 :min="0"
+							 :max="10"
+							 :step="0.1">
+				</div>
+
 				<div>
 					<label for="routeLength">Longueur du tracé (mètres):</label>
 					<input type="number"
 							 v-model="data.routeLength"
-							 @input="refreshReport">
+							 @input="refreshReport"
+							 :min="0">
 				</div>
 				<div>
 					<label for="routeWidth">Largeur du tracé (mètres):</label>
 					<input type="number"
 							 v-model="data.routeWidth"
-							 @input="refreshReport">
+							 @input="refreshReport"
+							 :min="0">
 				</div>
 				<div>
 					<label for="routeTickness">Epaisseur du tracé (mètres):</label>
 					<input type="number"
 							 v-model="data.routeTickness"
-							 @input="refreshReport">
+							 @input="refreshReport"
+							 :min="0">
 				</div>
 
 
 				<div><strong>Volume:</strong> {{ routeVolume }} m³</div>
 				<div><strong>Quantité de matériau:</strong> {{ materialQuantity }} kg</div>
-				<div><strong>CO2 émis:</strong> {{ quantity }} kg</div>
+				<div><strong>CO2 émis:</strong> {{ coQuantity }} kg</div>
 			</div>
 
 
@@ -49,15 +73,19 @@ export default {
 			materialImpact: 0.5,
 			routeVolume: 0,
 			materialQuantity: 0,
-			quantity: 0,
+			coQuantity: 0,
 		};
+	},
+
+	mounted() {
+		this.refreshReport();
 	},
 
 	methods: {
 		refreshReport() {
-			this.data.routeVolume = this.calculateVolume();
-			this.data.materialQuantity = this.calculateMaterialQuantity();
-			this.co2Quantity = this.calculateCO2();
+			this.calculateVolume();
+			this.calculateMaterialQuantity();
+			this.calculateCO2();
 		},
 		calculateVolume() {
 			this.routeVolume = Math.floor(this.data.routeLength * this.data.routeWidth * this.data.routeTickness * 100) / 100;
@@ -66,8 +94,7 @@ export default {
 			this.materialQuantity = Math.floor(this.routeVolume * this.materialVolumeMass * 100) / 100;
 		},
 		calculateCO2() {
-			this.quantity = Math.floor(this.materialQuantity * this.materialImpact * 100) / 100;
-			console.log(this.quantity);
+			this.coQuantity = Math.floor(this.materialQuantity * this.materialImpact * 100) / 100;
 		}
 	},
 };
