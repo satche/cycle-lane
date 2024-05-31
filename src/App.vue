@@ -1,24 +1,31 @@
 <template>
+
   <Map @update-map-data="updateMapData" />
+
   <InfoPane :data="mapData"
             @generate-report="handleGenerateReport" />
-  <Report v-if="isOpen"
-          :data="reportData"  
-          @close-report="isOpen = false" />
+
+  <Modal :isOpen="isModalOpen"
+         @close="isModalOpen = false">
+    <Report :data="reportData" />
+  </Modal>
+
 </template>
 
 <script>
 import { ref } from 'vue'
 import Map from './components/Map.vue'
-import InfoPane from './components/InfoPane.vue'
+import InfoPane from './components/info-pane/InfoPane.vue'
 import Report from './components/Report.vue'
+import Modal from './components/ui/Modal.vue'
 
 export default {
 
   components: {
     Map,
     InfoPane,
-    Report
+    Report,
+    Modal,
   },
 
   setup() {
@@ -30,11 +37,11 @@ export default {
 
     const reportData = ref(null);
 
-    const isOpen = ref(false);
+    const isModalOpen = ref(false);
 
     const handleGenerateReport = (data) => {
       reportData.value = data;
-      isOpen.value = true;
+      isModalOpen.value = true;
     };
 
     const updateMapData = (data) => {
@@ -43,7 +50,7 @@ export default {
 
     return {
       mapData,
-      isOpen,
+      isModalOpen,
       reportData,
       updateMapData,
       handleGenerateReport,

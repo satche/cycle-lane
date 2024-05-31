@@ -1,11 +1,9 @@
-<script>
+<script setup>
+import { defineProps } from 'vue';
 
-export default {
-	props: {
-		data: Object,
-	},
-};
-
+const props = defineProps({
+	data: Object,
+});
 </script>
 
 <template>
@@ -24,6 +22,10 @@ export default {
 					<strong>Energie:</strong> {{ data.options.energy }} kWh
 				</li>
 			</ul>
+		</div>
+
+		<div v-else>
+			<div>Sélectionnez un point sur la carte</div>
 		</div>
 	</div>
 </template>

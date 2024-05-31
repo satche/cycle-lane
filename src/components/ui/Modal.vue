@@ -1,0 +1,57 @@
+<template>
+	<Transition>
+		<div v-if="isOpen"
+			  @click.self="close"
+			  class="modal-container">
+			<dialog open
+					  @click.stop>
+				<slot></slot>
+			</dialog>
+		</div>
+	</Transition>
+</template>
+
+<script setup>
+import { defineProps, defineEmits } from 'vue';
+
+const props = defineProps({
+	isOpen: Boolean,
+})
+
+// Close modal event
+const emit = defineEmits(['close'])
+const close = () => emit('close');
+
+</script>
+
+<style scoped>
+.modal {
+	padding: 20px;
+	background: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
+.modal-container {
+	z-index: 1100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.25);
+}
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
+</style>
