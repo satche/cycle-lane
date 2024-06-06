@@ -6,19 +6,21 @@
 
 		<section class="report_section">
 
-			<h3 class="title">Piste cyclable</h3>
+			<h3 class="title">Route béton</h3>
 
 			<div class="editableFields">
-				<InputField label="Longueur (mètres)"
+				<InputField label="Longueur"
 								id="routeLength"
 								type="number"
+								unit="m."
 								v-model="routeLength"
 								@input="refreshReport"
 								:min="0" />
 
-				<InputField label="Largeur (mètres)"
+				<InputField label="Largeur"
 								id="routeWidth"
 								type="number"
+								unit="m."
 								v-model="routeWidth"
 								@input="refreshReport"
 								:min="0" />
@@ -27,21 +29,33 @@
 
 			<div class="informationFields">
 
-				<InfoField label="Volume de béton (m³)"
+				<InfoField label="Volume de béton"
 							  :value="routeVolume"
-							  :text="`Calculé avec une épaisseur de ${routeTickness} mètres`" />
+							  unit="m³"
+							  :tooltip="`Calculé avec une épaisseur de ${routeTickness} mètres`" />
 
-				<InfoField label="Quantité de béton (kg)"
-							  :value="materialQuantity"
-							  :text="`Calculé avec une masse volumique de ${materialVolumeMass} kg/m³`" />
+				<InfoField label="Quantité de béton"
+							  :value="concreteQuantity"
+							  unit="kg"
+							  :tooltip="`Calculé avec une masse volumique de ${concreteVolumeMass} kg/m³`" />
 
-				<InfoField label="CO2 émis (kg)"
-							  :value="coQuantity"
-							  :text="`Calculé avec un impact de ${materialImpact} kg de CO2 par kg de béton`" />
+				<InfoField label="CO2 émis"
+							  :value="concreteCoQuantity"
+							  unit="kg"
+							  :tooltip="`Calculé avec un impact de ${concreteImpact} kg de CO2 par kg de béton`" />
 
 			</div>
 
 		</section>
+
+		<section class="report_section">
+
+			<h3 class="title">Structure en bois</h3>
+
+
+
+		</section>
+
 	</div>
 
 </template>
@@ -62,11 +76,12 @@ export default {
 			routeLength: this.data.routeLength,
 			routeWidth: this.data.routeWidth,
 			routeTickness: this.data.routeTickness,
-			materialVolumeMass: 2350,
-			materialImpact: 0.109,
 			routeVolume: 0,
-			materialQuantity: 0,
-			coQuantity: 0,
+
+			concreteVolumeMass: 2350,
+			concreteImpact: 0.109,
+			concreteQuantity: 0,
+			concreteCoQuantity: 0,
 		};
 	},
 
@@ -83,17 +98,17 @@ export default {
 	methods: {
 		refreshReport() {
 			this.calculateVolume();
-			this.calculateMaterialQuantity();
+			this.calculateconcreteQuantity();
 			this.calculateCO2();
 		},
 		calculateVolume() {
 			this.routeVolume = Math.floor(this.routeLength * this.routeWidth * this.routeTickness * 100) / 100;
 		},
-		calculateMaterialQuantity() {
-			this.materialQuantity = Math.floor(this.routeVolume * this.materialVolumeMass * 100) / 100;
+		calculateconcreteQuantity() {
+			this.concreteQuantity = Math.floor(this.routeVolume * this.concreteVolumeMass * 100) / 100;
 		},
 		calculateCO2() {
-			this.coQuantity = Math.floor(this.materialQuantity * this.materialImpact / 40 * 100) / 100;
+			this.concreteCoQuantity = Math.floor(this.concreteQuantity * this.concreteImpact / 40 * 100) / 100;
 		}
 	},
 };

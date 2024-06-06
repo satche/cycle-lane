@@ -9,7 +9,10 @@
 				 :value="modelValue"
 				 @input="$emit('update:modelValue', $event.target.value)"
 				 :required="required"
-				 :disabled="disabled" />
+				 :disabled="disabled"
+				 dir="rtl"
+				 />
+		{{ unit }}
 	</div>
 </template>
 
@@ -39,6 +42,10 @@ export default {
 		},
 		modelValue: {
 			type: [String, Number],
+			default: "",
+		},
+		unit: {
+			type: String,
 			default: "",
 		},
 		required: {

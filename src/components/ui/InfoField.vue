@@ -5,7 +5,7 @@
 			<strong>{{ label }}</strong>
 		</Tooltip>
 		<span>
-			{{ value }}
+			{{ value }} {{ unit }}
 		</span>
 	</div>
 </template>
@@ -16,16 +16,20 @@ import Tooltip from './Tooltip.vue';
 export default {
 	name: 'InfoField',
 	props: {
-		text: {
-			type: String,
-			default: "",
-		},
 		label: {
 			type: String,
 			default: "",
 		},
 		value: {
 			type: [String, Number],
+			default: "",
+		},
+		unit: {
+			type: String,
+			default: "",
+		},
+		tooltip: {
+			type: String,
 			default: "",
 		},
 	},
