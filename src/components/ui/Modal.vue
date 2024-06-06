@@ -27,12 +27,14 @@ const close = () => emit('close');
 
 <style scoped>
 .modal {
-	padding: 20px;
+	position: relative;
+	padding: 40px;
 	background: white;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 	border: 1px solid black;
-	min-width: 325px;
+	width: 100%;
+	max-width: 800px;
 }
 
 .modal-container {
@@ -45,6 +47,7 @@ const close = () => emit('close');
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	padding: 20px;
 	background: rgba(0, 0, 0, 0.25);
 }
 

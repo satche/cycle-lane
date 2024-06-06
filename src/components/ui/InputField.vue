@@ -6,7 +6,8 @@
 				 :placeholder="placeholder"
 				 :min="min"
 				 :max="max"
-				 :value="modelValue"
+				 :step="1"
+				 :value="Math.floor(modelValue)"
 				 @input="$emit('update:modelValue', $event.target.value)"
 				 :required="required"
 				 :disabled="disabled"
@@ -59,6 +60,12 @@ export default {
 			type: String,
 			default: null,
 		},
+
+		computed: {
+			formattedModelValue() {
+				return typeof this.modelValue === 'number' ? Math.floor(this.modelValue) : this.modelValue;
+			}
+		}
 	},
 };
 </script>
@@ -68,6 +75,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 0.8rem;
 }
 
 label {
@@ -78,7 +86,7 @@ label {
 
 input {
 	flex: 2;
-	padding: 8px;
+	padding: 5px;
 	max-width: 100px;
 	border: 0;
 	border-bottom: 1px solid #ccc;

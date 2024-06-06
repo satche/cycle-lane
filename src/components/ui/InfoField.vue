@@ -5,7 +5,7 @@
 			<span>{{ label }}</span>
 		</Tooltip>
 		<span>
-			{{ value }} <span class="unit">{{ unit }}</span>
+			{{ value.toFixed(2) }} <span class="unit">{{ unit }}</span>
 		</span>
 	</div>
 </template>
