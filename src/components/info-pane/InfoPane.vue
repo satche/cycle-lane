@@ -64,10 +64,7 @@ export default {
 		generateReport() {
 			const reportData = {
 				routeLength: this.data.route.features[0].properties.summary.distance,
-				routeWidth: 3,
-				routeTickness: 0.12,
-				materialVolumeMass: 2350,
-				materialImpact: 0.109,
+				irradiation: this.data.irradiation,
 			};
 			this.$emit('generate-report', reportData);
 		},

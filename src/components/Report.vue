@@ -64,7 +64,7 @@
 					<h3 class="title">☀️ Production solaire</h3>
 
 					<div class="inputFields">
-						<InputField label="Irradiation"
+						<InputField label="Irradiation moyenne"
 										id="irradiation"
 										type="number"
 										unit="Wh/m²"
@@ -153,8 +153,8 @@ export default {
 	data() {
 		return {
 			routeLength: this.data.routeLength,
-			routeWidth: this.data.routeWidth,
-			routeTickness: this.data.routeTickness,
+			routeWidth: 3,
+			routeTickness: 0.12,
 			routeVolume: 0,
 
 			concreteVolumeMass: 2350,
@@ -170,7 +170,7 @@ export default {
 			concreteLifespan: 40,
 			concreteStructureCo2Quantity: 0,
 
-			irradiation: 1200, // TODO: CHANGE CSV
+			irradiation: this.data.irradiation,
 			solarPanelSurface: 1.83,
 			solarPanelEfficiency: 0.23,
 			chainEfficiency: 0.83,

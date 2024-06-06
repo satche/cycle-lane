@@ -70,6 +70,7 @@ export default {
 				population: data["Population"],
 				energy: data["Energie solaire"],
 				cluster: data["Cluster"],
+
 			}
 
 			if (markerData.lat === undefined || markerData.lng === undefined) {
@@ -168,7 +169,6 @@ export default {
 					],
 					profile: "cycling-regular",
 					elevation: "true",
-					"extra_info": ["steepness"],
 					format: "geojson",
 				})
 				.catch(error => {
@@ -176,8 +176,10 @@ export default {
 				});
 
 			this.route = response;
+			const averageIrradiation = (this.startMarker.options.energy + this.endMarker.options.energy) / 2;
 			this.$emit('update-map-data', {
-				route: this.route
+				route: this.route,
+				irradiation: averageIrradiation
 			})
 		},
 
