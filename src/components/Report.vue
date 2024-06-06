@@ -40,7 +40,7 @@
 							  :tooltip="`Calculé avec une masse volumique de ${concreteVolumeMass} kg/m³`" />
 
 				<InfoField label="CO2 émis"
-							  :value="concreteCoQuantity"
+							  :value="concreteCo2Quantity"
 							  unit="kg"
 							  :tooltip="`Calculé avec un impact de ${concreteImpact} kg de CO2 par kg de béton`" />
 
@@ -52,8 +52,29 @@
 
 			<h3 class="title">Structure en bois</h3>
 
+			<div class="informationFields">
 
+				<InfoField label="CO2 émis"
+							  :value="woodCo2Quantity"
+							  unit="kg/an"
+							  :tooltip="`Calculé avec un impact de ${woodImpact} kg de CO2 par mètre de tracé`" />
 
+			</div>
+
+		</section>
+
+		<section class="report_section">
+
+			<h3 class="title">Structure en béton</h3>
+
+			<div class="informationFields">
+
+				<InfoField label="CO2 émis"
+							  :value="concreteStructureCo2Quantity"
+							  unit="kg/an"
+							  :tooltip="`Calculé avec un impact de ${concreteStructureImpact} kg de CO2 par mètre de tracé`" />
+
+			</div>
 		</section>
 
 	</div>
@@ -81,7 +102,15 @@ export default {
 			concreteVolumeMass: 2350,
 			concreteImpact: 0.109,
 			concreteQuantity: 0,
-			concreteCoQuantity: 0,
+			concreteCo2Quantity: 0,
+
+			woodImpact: 0.504,
+			woodLifespan: 40,
+			woodCo2Quantity: 0,
+
+			concreteStructureImpact: 40.984,
+			concreteLifespan: 40,
+			concreteStructureCo2Quantity: 0,
 		};
 	},
 
@@ -108,7 +137,8 @@ export default {
 			this.concreteQuantity = Math.floor(this.routeVolume * this.concreteVolumeMass * 100) / 100;
 		},
 		calculateCO2() {
-			this.concreteCoQuantity = Math.floor(this.concreteQuantity * this.concreteImpact / 40 * 100) / 100;
+			this.concreteCo2Quantity = Math.floor(this.concreteQuantity * this.concreteImpact / 40 * 100) / 100;
+			this.woodCo2Quantity = Math.floor(this.routeLength * this.woodImpact / this.woodLifespan * 100) / 100;
 		}
 	},
 };

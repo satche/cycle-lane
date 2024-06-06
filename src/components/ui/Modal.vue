@@ -32,7 +32,7 @@ const close = () => emit('close');
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 	border: 1px solid black;
-	min-width: 275px;
+	min-width: 325px;
 }
 
 .modal-container {

@@ -10,9 +10,8 @@
 				 @input="$emit('update:modelValue', $event.target.value)"
 				 :required="required"
 				 :disabled="disabled"
-				 dir="rtl"
-				 />
-		{{ unit }}
+				 dir="rtl" />
+		<span class="unit">{{ unit }}</span>
 	</div>
 </template>
 
@@ -74,17 +73,21 @@ export default {
 label {
 	margin: 0;
 	flex: 1;
-	font-weight: bold;
 	margin-right: 20px;
 }
 
 input {
 	flex: 2;
 	padding: 8px;
-	max-width: 75px;
+	max-width: 100px;
 	border: 0;
 	border-bottom: 1px solid #ccc;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
+}
+
+.unit {
+	font-size: 0.8rem;
+	color: #888;
 }
 </style>

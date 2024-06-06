@@ -1,11 +1,11 @@
 <template>
 	<div class="infoField">
-		<Tooltip :text="text"
+		<Tooltip :text="tooltip"
 					position="top">
-			<strong>{{ label }}</strong>
+			<span>{{ label }}</span>
 		</Tooltip>
 		<span>
-			{{ value }} {{ unit }}
+			{{ value }} <span class="unit">{{ unit }}</span>
 		</span>
 	</div>
 </template>
@@ -45,5 +45,10 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1rem;
+}
+
+.unit {
+	font-size: 0.8rem;
+	color: #888;
 }
 </style>
