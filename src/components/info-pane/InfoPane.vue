@@ -66,8 +66,8 @@ export default {
 				routeLength: this.data.route.features[0].properties.summary.distance,
 				routeWidth: 3,
 				routeTickness: 0.12,
-				materialVolumeMass: 2.5,
-				materialImpact: 0.5,
+				materialVolumeMass: 2350,
+				materialImpact: 0.109,
 			};
 			this.$emit('generate-report', reportData);
 		},
