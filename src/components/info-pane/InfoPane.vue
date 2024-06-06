@@ -161,7 +161,7 @@ export default {
 	margin-bottom: 0px;
 
 	& .separator {
-		width: 50px;
+		width: 150px;
 		padding: 0 15px;
 		height: 100%;
 		text-align: center;
