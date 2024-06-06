@@ -15,13 +15,6 @@
 			<li class="route_descent">
 				<strong>Descente:</strong> {{ data.features[0].properties.descent }}m
 			</li>
-			<li class="route_steepness">
-				<strong>Pente:</strong>
-				<ul class="route_steepness_list"
-					 v-for="step in data.features[0].properties.extras.steepness.summary">
-					<li>{{ step.distance }}m ({{ step.amount }}%)</li>
-				</ul>
-			</li>
 		</ul>
 	</div>
 </template>

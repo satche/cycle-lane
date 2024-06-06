@@ -1,7 +1,7 @@
 <template>
 	<div class="report"
 		  @click.stop>
-		<strong class="title">Rapport</strong>
+		<strong class="title">🔖 Rapport</strong>
 
 		<div>
 			<label for="routeLength">Longueur du tracé (mètres):</label>

@@ -4,7 +4,8 @@
 			  @click.self="close"
 			  class="modal-container">
 			<dialog open
-					  @click.stop>
+					  @click.stop
+					  class="modal">
 				<slot></slot>
 			</dialog>
 		</div>
@@ -28,8 +29,9 @@ const close = () => emit('close');
 .modal {
 	padding: 20px;
 	background: white;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
+	border: 1px solid black;
 }
 
 .modal-container {

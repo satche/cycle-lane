@@ -19,10 +19,12 @@
 
 		<Route :data="data.route" />
 
-		<button @click="generateReport"
-				  v-if="data.startMarker && data.endMarker">
-			Generate Report
-		</button>
+		<div id="infoPane_reportButton">
+			<button @click="generateReport"
+					  v-if="data.startMarker && data.endMarker">
+				🔖 Générer le rapport
+			</button>
+		</div>
 
 	</section>
 </template>
@@ -179,5 +181,35 @@ export default {
 .title {
 	font-size: 1.1rem;
 	font-weight: bold;
+}
+
+#infoPane_reportButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+
+	& button {
+		padding: 10px 20px;
+		color: black;
+		background: white;
+		border: 1px solid black;
+		border-radius: 5px;
+		font-size: 1rem;
+		font-weight: bold;
+		transition: all 0.2s ease;
+
+		&:hover {
+			transform: translateY(-3px);
+			background: white;
+			box-shadow: 0px 3px 0px rgb(0, 0, 0);
+			cursor: pointer;
+		}
+
+		&:active {
+			transform: translateY(0px);
+			box-shadow: 0px 0px 0px rgb(0, 0, 0);
+		}
+	}
 }
 </style>
