@@ -9,11 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.2.0",
-    "@vitejs/plugin-vue": "^5.0.4"
+    "vite": "^5.2.12",
+    "@vitejs/plugin-vue": "^5.0.5"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
     "leaflet": "^1.9.4",
     "openrouteservice-js": "^0.3.2",
