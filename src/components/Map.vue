@@ -46,7 +46,7 @@ export default {
 
 
 		// Fetch marker data
-		let response = await fetch("./data/Data_villages_vaud.json");
+		let response = await fetch("./data.json");
 		this.data = await response.json();
 
 		// Display each marker on the map
