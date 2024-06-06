@@ -67,7 +67,7 @@
                   <InputField label="Irradiation moyenne"
                               id="irradiation"
                               type="number"
-                              unit="Wh/m²"
+                              unit="kWh/m²"
                               v-model="irradiation"
                               @input="refreshReport"
                               :min="0" />
