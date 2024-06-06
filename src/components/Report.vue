@@ -67,7 +67,7 @@
                   <InputField label="Irradiation moyenne"
                               id="irradiation"
                               type="number"
-                              unit="kWh/m²"
+                              unit="kWh/m²/an"
                               v-model="irradiation"
                               @input="refreshReport"
                               :min="0" />
@@ -76,7 +76,7 @@
                <div class="informationFields">
                   <InfoField label="Production solaire"
                              :value="solarPanelProduction"
-                             unit="Wh/an"
+                             unit="kWh/an"
                              :tooltip="`La route peut compter en largeur ${solarPannelNumberOnRouteWidth} panneaux solaires de ${solarPanelSurface} m² chacun, avec un rendement de ${solarPanelEfficiency} et une efficacité de la chaîne de ${chainEfficiency}`" />
 
                   <InfoField label="Impact énergie solaire"
