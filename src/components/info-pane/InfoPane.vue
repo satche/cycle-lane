@@ -140,6 +140,8 @@ export default {
 	& .infoPane_toggleButton {
 		width: 0;
 		left: 0;
+		border: 0.5px solid black;
+		/* I'm not sure why, but it's visually better like this */
 
 		&:hover {
 			transform: translateX(0);

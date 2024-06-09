@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import L from "leaflet";
+import L, { icon } from "leaflet";
 import Openrouteservice from "openrouteservice-js";
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -78,18 +78,30 @@ export default {
 			}
 
 			// Define marker's color according to cluster
+
 			let colors = [
-				"e61038", // Train stations (red)
-				"4ab4d5", // Rural areas (green)
-				"717e94", // Mountain areas (gray)
-				"8f61ae" // City centers (purple)
+				"#e61038", // Train stations (red)
+				"#4ab4d5", // Rural areas (blue)
+				"#717e94", // Mountain areas (gray)
+				"#8f61ae" // City centers (purple)
 			];
 
+			let strokeColors = [
+				"#9f2a2a", // Train stations (red)
+				"#306490", // Rural areas (blue)
+				"#494949", // Mountain areas (gray)
+				"#74196f" // City centers (purple)
+			];
+
+			let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+				<path fill="${colors[markerData.cluster]}" stroke="${strokeColors[markerData.cluster]}" stroke-width="1" d="M12 12q.825 0 1.413-.587T14 10t-.587-1.412T12 8t-1.412.588T10 10t.588 1.413T12 12m0 10q-4.025-3.425-6.012-6.362T4 10.2q0-3.75 2.413-5.975T12 2t5.588 2.225T20 10.2q0 2.5-1.987 5.438T12 22"/>
+			</svg>`;
+
 			// Add marker to map
-			let icon = L.icon({
-				iconSize: [25, 25],
-				iconUrl:
-					`https://api.iconify.design/material-symbols:location-on.svg?color=%23${colors[markerData.cluster]}`,
+			let icon = L.divIcon({
+				html: svg,
+				iconSize: [24, 24],
+				iconAnchor: [12, 24],
 			});
 
 			L.marker([markerData.lat, markerData.lng], {
@@ -139,7 +151,17 @@ export default {
 		},
 
 		selectThisMarker(marker) {
+
+			let lat = marker.getLatLng().lat;
+			let lng = marker.getLatLng().lng;
+			let offset = 0.08;
+
 			marker.setOpacity(1);
+			if (this.startMarker && this.endMarker) {
+				this.map.fitBounds([this.startMarker.getLatLng(), this.endMarker.getLatLng()]);
+				return;
+			}
+			this.map.setView([lat, lng + offset], 12);
 		},
 
 		unselectAllMarkers() {
@@ -148,7 +170,7 @@ export default {
 			this.route = undefined;
 			this.map.eachLayer((layer) => {
 				if (layer instanceof L.Marker) {
-					layer.setOpacity(0.4);
+					layer.setOpacity(0.3);
 				}
 				if (layer instanceof L.Polyline) {
 					this.map.removeLayer(layer);
@@ -202,8 +224,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #map {
 	height: 100vh;
+}
+
+.leaflet-div-icon {
+	margin: 0;
+	background: none;
+	border: 0;
 }
 </style>
