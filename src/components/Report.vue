@@ -145,6 +145,9 @@
 import Tooltip from './ui/Tooltip.vue';
 import InputField from './ui/InputField.vue';
 import InfoField from './ui/InfoField.vue';
+import Openrouteservice from "openrouteservice-js";
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 export default {
    props: {
@@ -153,6 +156,8 @@ export default {
 
    data() {
       return {
+         markersCoordinates: this.data.markersCoordinates,
+
          routeLength: this.data.routeLength,
          routeWidth: 3,
          routeTickness: 0.12,
@@ -183,7 +188,7 @@ export default {
          totalCo2Quantity: 0,
 
          workingDays: 235,
-         carDistance: 1500, // m
+         carDistance: 0, // m
          carCo2Impact: 133.5, // kg CO2 / km
       };
    },
@@ -195,20 +200,21 @@ export default {
    },
 
    mounted() {
+      this.calculateCarDistance();
       this.refreshReport();
    },
 
    methods: {
       refreshReport() {
-         this.calculateVolume();
-         this.calculateconcreteQuantity();
+         this.calculateConcreteVolume();
+         this.calculateConcreteQuantity();
          this.calculateSolarPannelProduction();
          this.calculateCO2();
       },
-      calculateVolume() {
+      calculateConcreteVolume() {
          this.routeVolume = this.routeLength * this.routeWidth * this.routeTickness;
       },
-      calculateconcreteQuantity() {
+      calculateConcreteQuantity() {
          this.concreteQuantity = this.routeVolume * this.concreteVolumeMass;
       },
       calculateCO2() {
@@ -231,6 +237,21 @@ export default {
 
          this.carCo2Quantity = carCo2;
       },
+      async calculateCarDistance() {
+         this.direction = new Openrouteservice.Directions({ api_key: apiKey })
+         const response = await this.direction
+            .calculate({
+               coordinates: [
+                  this.markersCoordinates[0], this.markersCoordinates[1]
+               ],
+               profile: "driving-car",
+               format: "geojson",
+            })
+            .catch(error => {
+               console.error(error);
+            });
+         this.carDistance = response.features[0].properties.summary.distance;
+      }
    },
 };
 </script>

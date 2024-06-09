@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import L, { icon } from "leaflet";
+import L from "leaflet";
 import Openrouteservice from "openrouteservice-js";
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -186,8 +186,10 @@ export default {
 			const response = await this.direction
 				.calculate({
 					coordinates: [
-						[this.startMarker.getLatLng().lng, this.startMarker.getLatLng().lat],
-						[this.endMarker.getLatLng().lng, this.endMarker.getLatLng().lat],
+						[this.startMarker.getLatLng().lng,
+						this.startMarker.getLatLng().lat],
+						[this.endMarker.getLatLng().lng,
+						this.endMarker.getLatLng().lat],
 					],
 					profile: "cycling-regular",
 					elevation: "true",

@@ -63,9 +63,16 @@ export default {
 	methods: {
 		generateReport() {
 			const reportData = {
+				markersCoordinates: [
+					[this.data.startMarker.getLatLng().lng,
+					this.data.startMarker.getLatLng().lat],
+					[this.data.endMarker.getLatLng().lng,
+					this.data.endMarker.getLatLng().lat],
+				],
 				routeLength: this.data.route.features[0].properties.summary.distance,
 				irradiation: this.data.irradiation,
 			};
+
 			this.$emit('generate-report', reportData);
 		},
 	},
