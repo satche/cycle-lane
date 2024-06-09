@@ -6,6 +6,11 @@
 			<dialog open
 					  @click.stop
 					  class="modal">
+				<button @click="close"
+						  class="modal-close">
+					<img src="@/assets/icons/close.svg"
+						  alt="Close modal" />
+				</button>
 				<slot></slot>
 			</dialog>
 		</div>
@@ -49,6 +54,19 @@ const close = () => emit('close');
 	height: 100vh;
 	padding: 20px;
 	background: rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.5;
+	}
 }
 
 .v-enter-active,
