@@ -7,13 +7,13 @@
 				<strong>Durée:</strong> {{ formattedDuration }}
 			</li>
 			<li class="route_distance">
-				<strong>Distance:</strong> {{ formattedDistance }}
+				<strong>Distance:</strong> {{ formattedDistance }} km.
 			</li>
 			<li class="route_ascent">
-				<strong>Ascension:</strong> {{ data.features[0].properties.ascent }}m
+				<strong>Ascension:</strong> {{ data.features[0].properties.ascent }} m.
 			</li>
 			<li class="route_descent">
-				<strong>Descente:</strong> {{ data.features[0].properties.descent }}m
+				<strong>Descente:</strong> {{ data.features[0].properties.descent }} m.
 			</li>
 		</ul>
 	</div>
@@ -32,7 +32,7 @@ export default {
 			let durationInMinutes = this.data.features[0].properties.summary.duration / 60;
 			let hours = Math.floor(durationInMinutes / 60);
 			let minutes = Math.round(durationInMinutes % 60);
-			return hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
+			return hours > 0 ? `${hours} h. ${minutes} min.` : `${minutes} min.`;
 		},
 
 		formattedDistance() {
@@ -40,7 +40,7 @@ export default {
 			let distance = this.data.features[0].properties.summary.distance;
 			let distanceInKm = distance / 1000;
 			let distanceRounded = Math.floor(distanceInKm * 100) / 100;
-			return `${distanceRounded}km`;
+			return distanceRounded;
 		},
 	},
 };

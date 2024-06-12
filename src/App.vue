@@ -1,12 +1,18 @@
 <template>
 
+  <Modal :isOpen="isOnboardingOpen"
+         @close="isOnboardingOpen = false">
+    <Onboarding @close="isOnboardingOpen = false" />
+  </Modal>
+
   <Map @update-map-data="updateMapData" />
 
   <InfoPane :data="mapData"
-            @generate-report="handleGenerateReport" />
+            @generate-report="handleGenerateReport"
+            @open-onboarding="isOnboardingOpen = true" />
 
-  <Modal :isOpen="isModalOpen"
-         @close="isModalOpen = false">
+  <Modal :isOpen="isReportOpen"
+         @close="isReportOpen = false">
     <Report :data="reportData" />
   </Modal>
 
@@ -18,6 +24,7 @@ import Map from './components/Map.vue'
 import InfoPane from './components/info-pane/InfoPane.vue'
 import Report from './components/Report.vue'
 import Modal from './components/ui/Modal.vue'
+import Onboarding from './components/Onboarding.vue'
 
 export default {
 
@@ -26,6 +33,7 @@ export default {
     InfoPane,
     Report,
     Modal,
+    Onboarding,
   },
 
   setup() {
@@ -37,11 +45,13 @@ export default {
 
     const reportData = ref(null);
 
-    const isModalOpen = ref(false);
+    const isReportOpen = ref(false);
+
+    const isOnboardingOpen = ref(true);
 
     const handleGenerateReport = (data) => {
       reportData.value = data;
-      isModalOpen.value = true;
+      isReportOpen.value = true;
     };
 
     const updateMapData = (data) => {
@@ -50,7 +60,8 @@ export default {
 
     return {
       mapData,
-      isModalOpen,
+      isReportOpen,
+      isOnboardingOpen,
       reportData,
       updateMapData,
       handleGenerateReport,
@@ -68,5 +79,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   overflow: hidden;
+}
+
+.btn {
+  padding: 10px 20px;
+  color: black;
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: white;
+    box-shadow: 0px 3px 0px rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(0px);
+    box-shadow: 0px 0px 0px rgb(0, 0, 0);
+  }
 }
 </style>

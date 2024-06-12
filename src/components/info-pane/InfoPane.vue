@@ -6,7 +6,14 @@
 				  aria-label="Open information pane"
 				  @click="isOpen = !isOpen">
 			<img src="@/assets/icons/chevron-left.svg"
-				  alt="" />
+				  alt="Chevron left icon" />
+		</button>
+
+		<button class="infoPane_questionButton"
+				  aria-label="Open onboarding modal"
+				  @click="openOnboarding">
+			<img src="@/assets/icons/question.svg"
+				  alt="Question mark icon" />
 		</button>
 
 		<div id="infoPane_markers">
@@ -21,7 +28,8 @@
 
 		<div id="infoPane_reportButton">
 			<button @click="generateReport"
-					  v-if="data.startMarker && data.endMarker">
+					  v-if="data.startMarker && data.endMarker"
+					  class="btn">
 				🔖 Générer le rapport
 			</button>
 		</div>
@@ -75,6 +83,10 @@ export default {
 
 			this.$emit('generate-report', reportData);
 		},
+
+		openOnboarding() {
+			this.$emit('open-onboarding');
+		},
 	},
 };
 </script>
@@ -87,6 +99,7 @@ export default {
 	width: 600px;
 	height: 100vh;
 	padding: 40px;
+	padding-top: 60px;
 	z-index: 1000;
 	background: white;
 	transform: translateX(100%);
@@ -139,6 +152,31 @@ export default {
 		border-radius: 10px 0 0 10px;
 		transform: translate(-50%, -50%);
 	}
+}
+
+.infoPane_questionButton {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	width: 15px;
+	height: 15px;
+	padding: 0;
+	border: none;
+	background: none;
+	opacity: 0.4;
+
+	&>img {
+		position: absolute;
+		top: calc(50% - 13px);
+		left: calc(50% - 13px);
+		z-index: 10;
+	}
+
+	&:hover {
+		cursor: pointer;
+		opacity: 1;
+	}
+
 }
 
 #infoPane.isOpen {
@@ -194,28 +232,5 @@ export default {
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
-
-	& button {
-		padding: 10px 20px;
-		color: black;
-		background: white;
-		border: 1px solid black;
-		border-radius: 5px;
-		font-size: 1rem;
-		font-weight: bold;
-		transition: all 0.2s ease;
-
-		&:hover {
-			transform: translateY(-3px);
-			background: white;
-			box-shadow: 0px 3px 0px rgb(0, 0, 0);
-			cursor: pointer;
-		}
-
-		&:active {
-			transform: translateY(0px);
-			box-shadow: 0px 0px 0px rgb(0, 0, 0);
-		}
-	}
 }
 </style>

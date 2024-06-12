@@ -16,7 +16,7 @@ const props = defineProps({
 			</div>
 			<ul class="marker_infoList">
 				<li class="marker_population">
-					<strong>Population:</strong> {{ data.options.population }} habitants
+					<strong>Population:</strong> {{ data.options.population }} hab.
 				</li>
 				<li class="marker_energy">
 					<strong>Energie:</strong> {{ data.options.energy }} kWh
