@@ -5,7 +5,7 @@
 			<span>{{ label }}</span>
 		</Tooltip>
 		<span>
-			{{ value.toFixed(2) }} <span class="unit">{{ unit }}</span>
+			{{ value.toFixed(this.rounded) }} <span class="unit">{{ unit }}</span>
 		</span>
 	</div>
 </template>
@@ -31,6 +31,10 @@ export default {
 		tooltip: {
 			type: String,
 			default: "",
+		},
+		rounded: {
+			type: Number,
+			default: 2,
 		},
 	},
 	components: {

@@ -23,6 +23,15 @@
                               v-model="routeWidth"
                               @input="refreshReport"
                               :min="0" />
+                  <InputField label="Pente"
+                              id="routeSteepness"
+                              type="number"
+                              unit="%"
+                              v-model="routeSteepness"
+                              @input="refreshReport"
+                              :step="0.1"
+                              :rounded="1"
+                              :min="0" />
                </div>
 
 
@@ -35,7 +44,7 @@
                              :value="concreteQuantity"
                              unit="kg"
                              :tooltip="`Calculé avec une masse volumique de ${concreteVolumeMass} kg/m³`" />
-                  <InfoField label="CO2 émis"
+                  <InfoField label="CO2 émis pour la construction"
                              :value="concreteCo2Quantity"
                              unit="kg"
                              :tooltip="`Calculé avec un impact de ${concreteImpact} kg de CO2 par kg de béton`" />
@@ -84,7 +93,7 @@
                              unit="kg/an"
                              :tooltip="`Calculé avec un impact de ${solarCo2Impact} kg de CO2 par kWh produit`" />
 
-                  <p>La production solaire pourrait alimenter
+                  <p>Grâce à la production solaire générée, il est possible d'alimenter environ
                      <Tooltip :text="`Calculé sur une base de ${energyProHouse} kWh/an/foyer`">
                         {{ (solarPanelProduction / energyProHouse).toFixed(2) }}
                      </Tooltip>
@@ -96,7 +105,7 @@
             <div class="report_field">
                <h3 class="title">💨 Impact total</h3>
                <div class="informationFields">
-                  <InfoField label="CO2 total"
+                  <InfoField label="Quantité de CO2 émis"
                              :value="totalCo2Quantity"
                              unit="kg/an"
                              :tooltip="`CO2 émis par la route en une année`" />
@@ -111,22 +120,24 @@
                <h3 class="title">🚗 Route voiture</h3>
 
                <div class="inputFields">
-                  <InputField label="Quantité CO2 émise par voiture"
-                              id="carCo2Impact"
-                              type="number"
-                              unit="kg/km"
-                              v-model="carCo2Impact"
-                              @input="refreshReport"
-                              :step="0.01"
-                              :min="0" />
-
-                  <InputField label="Distance parcourue par voiture"
+                  <InputField label="Longueur"
                               id="carDistance"
                               type="number"
                               unit="m."
                               v-model="carDistance"
                               @input="refreshReport"
                               :min="0" />
+                  <InputField label="Quantité CO2 par voiture"
+                              id="carCo2Impact"
+                              type="number"
+                              unit="kg/km"
+                              v-model="carCo2Impact"
+                              @input="refreshReport"
+                              :step="0.001"
+                              :rounded="3"
+                              :min="0" />
+
+
                </div>
 
                <div class="infoFields">
@@ -142,6 +153,24 @@
                </div>
 
             </div>
+
+            <hr>
+
+            <div class="report_field">
+               <h3 class="title">💯 Scores</h3>
+
+               <p>Le tronçon sélectionné est pertinent pour…</p>
+
+               <div class="informationFields">
+                  <InfoField label="Construire une piste cyclable"
+                             :value="score"
+                             unit="/5"
+                             :rounded="1"
+                             :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
+               </div>
+
+            </div>
+
          </section>
 
       </div>
@@ -170,6 +199,7 @@ export default {
          routeWidth: 3,
          routeTickness: 0.12,
          routeVolume: 0,
+         routeSteepness: this.data.routeSteepness,
 
          concreteVolumeMass: 2350,
          concreteImpact: 0.109,
@@ -201,6 +231,8 @@ export default {
          carDistance: 0, // m
          carCo2Impact: 0.133, // kg CO2 / km
          carCo2Quantity: 0,
+
+         score: 0,
       };
    },
 
@@ -221,6 +253,7 @@ export default {
          this.calculateConcreteQuantity();
          this.calculateSolarPannelProduction();
          this.calculateCO2();
+         this.evaluateRoute();
       },
       calculateConcreteVolume() {
          this.routeVolume = this.routeLength * this.routeWidth * this.routeTickness;
@@ -263,6 +296,34 @@ export default {
                console.error(error);
             });
          this.carDistance = response.features[0].properties.summary.distance;
+      },
+      evaluateRoute() {
+
+         const distance = this.routeLength / 1000; // in km
+         const steepness = this.routeSteepness; // in %
+
+         const distanceFactors = [
+            { max: 3, factor: 1.0 },
+            { max: 7, factor: 0.8 },
+            { max: 12, factor: 0.5 },
+            { max: 20, factor: 0.2 },
+            { max: Infinity, factor: 0.0 }
+         ];
+
+         const steepnessFactors = [
+            { max: 2, factor: 1.0 },
+            { max: 5, factor: 0.8 },
+            { max: 10, factor: 0.5 },
+            { max: 20, factor: 0.2 },
+            { max: Infinity, factor: 0.0 }
+         ];
+
+         const distanceEvaluation = distanceFactors.find(factor => distance < factor.max).factor;
+         const steepnessEvaluation = steepnessFactors.find(factor => steepness < factor.max).factor;
+
+         const score = (distanceEvaluation + steepnessEvaluation) / 2;
+         const scoreOnFive = score * 5;
+         this.score = scoreOnFive;
       }
    },
 };
@@ -313,7 +374,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
    }
 
    & .informationField {
@@ -321,5 +382,11 @@ export default {
       justify-content: space-between;
       margin-bottom: 1rem;
    }
+}
+
+hr {
+   border: 0;
+   border-top: 1px solid #ccc;
+   margin: 2rem 0;
 }
 </style>

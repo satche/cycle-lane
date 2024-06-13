@@ -7,8 +7,9 @@
 				 :min="min"
 				 :max="max"
 				 :step="step"
+				 :rounded="rounded"
 				 :value="modelValue"
-				 @input="$emit('update:modelValue', $event.target.value)"
+				 @input="handleInput"
 				 :required="required"
 				 :disabled="disabled"
 				 dir="rtl" />
@@ -64,12 +65,23 @@ export default {
 			type: Number,
 			default: 1,
 		},
-
-		computed: {
-			formattedModelValue() {
-				return typeof this.modelValue === 'number' ? Math.floor(this.modelValue) : this.modelValue;
+		rounded: {
+			type: Number,
+			default: 0,
+		},
+	},
+	methods: {
+		handleInput(event) {
+			this.updateValue(event.target.value);
+		},
+		updateValue(value) {
+			if (!isNaN(value)) {
+				this.$emit('update:modelValue', parseFloat(value).toFixed(this.rounded));
 			}
 		}
+	},
+	mounted() {
+		this.updateValue(this.modelValue);
 	},
 };
 </script>
@@ -79,7 +91,7 @@ export default {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 0.8rem;
+	margin-bottom: 0.5rem;
 }
 
 label {

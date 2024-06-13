@@ -40,6 +40,7 @@
 <script>
 import InfoMarker from './InfoMarker.vue';
 import Route from './InfoRoute.vue';
+import { calculateSteepness } from '../../scripts/utils.js';
 
 export default {
 	props: {
@@ -70,6 +71,12 @@ export default {
 
 	methods: {
 		generateReport() {
+			const steepness = calculateSteepness(
+				this.data.route.features[0].properties.ascent,
+				this.data.route.features[0].properties.descent,
+				this.data.route.features[0].properties.summary.distance,
+				true
+			);
 			const reportData = {
 				markersCoordinates: [
 					[this.data.startMarker.getLatLng().lng,
@@ -78,6 +85,7 @@ export default {
 					this.data.endMarker.getLatLng().lat],
 				],
 				routeLength: this.data.route.features[0].properties.summary.distance,
+				routeSteepness: steepness,
 				irradiation: this.data.irradiation,
 			};
 

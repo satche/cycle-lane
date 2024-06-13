@@ -15,15 +15,25 @@
 			<li class="route_descent">
 				<strong>Descente:</strong> {{ data.features[0].properties.descent }} m.
 			</li>
+			<li class="route_steepness">
+				<strong>Pente:</strong> {{ this.calculateSteepness.toFixed(2) }}%
+			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+import { calculateSteepness } from '../../scripts/utils.js';
 
 export default {
 	props: {
 		data: Object,
+	},
+
+	data() {
+		return {
+			steepness: 0,
+		};
 	},
 
 	computed: {
@@ -41,6 +51,15 @@ export default {
 			let distanceInKm = distance / 1000;
 			let distanceRounded = Math.floor(distanceInKm * 100) / 100;
 			return distanceRounded;
+		},
+
+		calculateSteepness() {
+			if (!this.data) return '';
+			let ascent = this.data.features[0].properties.ascent;
+			let descent = this.data.features[0].properties.descent;
+			let distance = this.data.features[0].properties.summary.distance;
+			let steepness = calculateSteepness(ascent, descent, distance, true);
+			return steepness;
 		},
 	},
 };
@@ -90,4 +109,4 @@ export default {
 		margin-right: 0.5rem;
 	}
 }
-</style>
+</style>../../scripts/utils.js/index.js

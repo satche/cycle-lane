@@ -72,7 +72,7 @@ export default {
 	border-radius: 5px;
 	z-index: 10;
 	font-size: 12px;
-	width: 250px;
+	width: 175px;
 }
 
 .tooltip-content::after {
