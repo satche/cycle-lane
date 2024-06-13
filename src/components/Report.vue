@@ -107,9 +107,10 @@
                   <InputField label="Quantité CO2 émise par voiture"
                               id="carCo2Impact"
                               type="number"
-                              unit="kg/an"
+                              unit="kg/km"
                               v-model="carCo2Impact"
                               @input="refreshReport"
+                              :step="0.01"
                               :min="0" />
 
                   <InputField label="Distance parcourue par voiture"
@@ -123,11 +124,11 @@
 
                <div class="infoFields">
                   <InfoField label="CO2 émis par les voitures"
-                             :value="carCo2Impact * carDistance / 1000"
+                             :value="carCo2Quantity"
                              unit="kg/an"
                              :tooltip="`Calculé sur ${workingDays} jours de travail par an`" />
 
-                  <p>Il faudrait environ {{ (totalCo2Quantity / carCo2Impact).toFixed(2) }} voitures pour
+                  <p>Il faudrait environ {{ (totalCo2Quantity / carCo2Quantity).toFixed(2) }} voitures pour
                      compenser
                      l'impact total de CO2</p>
 
@@ -189,7 +190,8 @@ export default {
 
          workingDays: 235,
          carDistance: 0, // m
-         carCo2Impact: 133.5, // kg CO2 / km
+         carCo2Impact: 0.133, // kg CO2 / km
+         carCo2Quantity: 0,
       };
    },
 
@@ -199,8 +201,8 @@ export default {
       InfoField,
    },
 
-   mounted() {
-      this.calculateCarDistance();
+   async mounted() {
+      await this.calculateCarDistance();
       this.refreshReport();
    },
 
@@ -224,6 +226,7 @@ export default {
          this.solarCo2Quantity = this.solarPanelProduction * this.solarCo2Impact;
 
          this.totalCo2Quantity = this.concreteCo2Quantity + this.woodCo2Quantity + this.concreteStructureCo2Quantity + this.solarCo2Quantity;
+         this.calculateCarCo2();
       },
       calculateSolarPannelProduction() {
          const solarPanelOnRouteLength = this.routeLength / 1.7;
@@ -232,7 +235,7 @@ export default {
          this.solarPanelProduction = solarPanelProduction;
       },
       calculateCarCo2() {
-         const distanceProYear = this.carDistance * this.workingDays;
+         const distanceProYear = (this.carDistance / 1000) * this.workingDays * 2; // in km, back and forth
          const carCo2 = this.carCo2Impact * distanceProYear;
 
          this.carCo2Quantity = carCo2;
@@ -254,6 +257,7 @@ export default {
       }
    },
 };
+
 </script>
 
 <style scoped>

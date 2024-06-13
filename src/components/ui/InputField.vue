@@ -6,8 +6,8 @@
 				 :placeholder="placeholder"
 				 :min="min"
 				 :max="max"
-				 :step="1"
-				 :value="Math.floor(modelValue)"
+				 :step="step"
+				 :value="modelValue"
 				 @input="$emit('update:modelValue', $event.target.value)"
 				 :required="required"
 				 :disabled="disabled"
@@ -59,6 +59,10 @@ export default {
 		id: {
 			type: String,
 			default: null,
+		},
+		step: {
+			type: Number,
+			default: 1,
 		},
 
 		computed: {
