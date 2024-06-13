@@ -83,6 +83,13 @@
                              :value="solarCo2Quantity"
                              unit="kg/an"
                              :tooltip="`Calculé avec un impact de ${solarCo2Impact} kg de CO2 par kWh produit`" />
+
+                  <p>La production solaire pourrait alimenter
+                     <Tooltip :text="`Calculé sur une base de ${energyProHouse} kWh/an/foyer`">
+                        {{ (solarPanelProduction / energyProHouse).toFixed(2) }}
+                     </Tooltip>
+                     foyers.
+                  </p>
                </div>
             </div>
 
@@ -181,10 +188,12 @@ export default {
          solarPanelSurface: 1.83,
          solarPanelEfficiency: 0.23,
          chainEfficiency: 0.83,
+
          solarPannelNumberOnRouteWidth: 4,
          solarPanelProduction: 0,
          solarCo2Impact: 0.037,
          solarCo2Quantity: 0,
+         energyProHouse: 3000, // kWh / year
 
          totalCo2Quantity: 0,
 
