@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>Welcome to GreenTrack! ☀️🚴🏻</h1>
-		<p>SolarTrack is a web app to help you analyze if it's relevant to build <strong>solar panel</strong>
+		<p>GreenTrack is a web app to help you analyze if it's relevant to build <strong>solar panel</strong>
 			infrastructures on top of chosen cycle lanes. Select 2 differents village/city on the map to create a cycle
 			route between them, then <strong>generate a report.</strong></p>
 
