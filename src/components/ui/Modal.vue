@@ -33,13 +33,15 @@ const close = () => emit('close');
 <style scoped>
 .modal {
 	position: relative;
+	width: 100%;
+	max-width: 800px;
+	max-height: 100%;
 	padding: 40px;
 	background: white;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 	border: 1px solid black;
-	width: 100%;
-	max-width: 800px;
+	overflow: auto;
 }
 
 .modal-container {
