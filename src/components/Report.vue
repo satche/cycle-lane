@@ -11,21 +11,18 @@
                <div class="inputFields">
                   <InputField label="Longueur"
                               id="routeLength"
-                              type="number"
                               unit="m."
                               v-model="routeLength"
                               @input="refreshReport"
                               :min="0" />
                   <InputField label="Largeur"
                               id="routeWidth"
-                              type="number"
                               unit="m."
                               v-model="routeWidth"
                               @input="refreshReport"
                               :min="0" />
                   <InputField label="Pente"
                               id="routeSteepness"
-                              type="number"
                               unit="%"
                               v-model="routeSteepness"
                               @input="refreshReport"
@@ -75,7 +72,6 @@
                <div class="inputFields">
                   <InputField label="Irradiation moyenne"
                               id="irradiation"
-                              type="number"
                               unit="kWh/m²/an"
                               v-model="irradiation"
                               @input="refreshReport"
@@ -122,14 +118,12 @@
                <div class="inputFields">
                   <InputField label="Longueur"
                               id="carDistance"
-                              type="number"
                               unit="m."
                               v-model="carDistance"
                               @input="refreshReport"
                               :min="0" />
                   <InputField label="Quantité CO2 par voiture"
                               id="carCo2Impact"
-                              type="number"
                               unit="kg/km"
                               v-model="carCo2Impact"
                               @input="refreshReport"
@@ -163,10 +157,15 @@
 
                <div class="informationFields">
                   <InfoField label="Construire une piste cyclable"
-                             :value="score"
+                             :value="routeScore"
                              unit="/5"
                              :rounded="1"
                              :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
+                  <InfoField label="Installer des panneaux solaires"
+                             :value="solarScore"
+                             unit="/5"
+                             :rounded="1"
+                             :tooltip="`Ce score se base sur l'énergie solaire annuelle et le nombre de foyers`" />
                </div>
 
             </div>
@@ -232,7 +231,8 @@ export default {
          carCo2Impact: 0.133, // kg CO2 / km
          carCo2Quantity: 0,
 
-         score: 0,
+         routeScore: 0,
+         solarScore: 0,
       };
    },
 
@@ -254,6 +254,7 @@ export default {
          this.calculateSolarPannelProduction();
          this.calculateCO2();
          this.evaluateRoute();
+         this.evaluateSolar();
       },
       calculateConcreteVolume() {
          this.routeVolume = this.routeLength * this.routeWidth * this.routeTickness;
@@ -323,7 +324,32 @@ export default {
 
          const score = (distanceEvaluation + steepnessEvaluation) / 2;
          const scoreOnFive = score * 5;
-         this.score = scoreOnFive;
+         this.routeScore = scoreOnFive;
+      },
+      evaluateSolar() {
+         const irradiation = this.irradiation; // in kWh/m²/year
+         const suppliedHouseNumber = this.solarPanelProduction / this.energyProHouse
+
+         const irradiationFactors = [
+            { min: 1400, factor: 1.0 },
+            { min: 1200, factor: 0.8 },
+            { min: 1000, factor: 0.5 },
+            { min: 0, factor: 0.2 }
+         ];
+
+         const supplyFactors = [
+            { min: 100, factor: 1.0 },
+            { min: 65, factor: 0.8 },
+            { min: 20, factor: 0.5 },
+            { min: 0, factor: 0.2 }
+         ];
+
+         const irradiationEvaluation = irradiationFactors.find(factor => irradiation >= factor.min).factor;
+         const supplyEvaluation = supplyFactors.find(factor => suppliedHouseNumber >= factor.min).factor;
+
+         const score = (irradiationEvaluation + supplyEvaluation) / 2;
+         const scoreOnFive = score * 5;
+         this.solarScore = scoreOnFive;
       }
    },
 };

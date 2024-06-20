@@ -2,16 +2,14 @@
 	<div class="input-field">
 		<label :for="id">{{ label }}</label>
 		<input :id="id"
-				 :type="type"
+				 type="number"
 				 :placeholder="placeholder"
 				 :min="min"
-				 :max="max"
 				 :step="step"
 				 :rounded="rounded"
 				 :value="modelValue"
 				 @input="handleInput"
-				 :required="required"
-				 :disabled="disabled"
+				 @keypress="isNumber($event)"
 				 dir="rtl" />
 		<span class="unit">{{ unit }}</span>
 	</div>
@@ -25,10 +23,6 @@ export default {
 			type: String,
 			default: "Label",
 		},
-		type: {
-			type: String,
-			default: "text",
-		},
 		placeholder: {
 			type: String,
 			default: "",
@@ -37,10 +31,7 @@ export default {
 			type: [String, Number],
 			default: null,
 		},
-		max: {
-			type: [String, Number],
-			default: null,
-		},
+
 		modelValue: {
 			type: [String, Number],
 			default: "",
@@ -48,14 +39,6 @@ export default {
 		unit: {
 			type: String,
 			default: "",
-		},
-		required: {
-			type: Boolean,
-			default: false,
-		},
-		disabled: {
-			type: Boolean,
-			default: false,
 		},
 		id: {
 			type: String,
@@ -71,13 +54,24 @@ export default {
 		},
 	},
 	methods: {
+		isNumber(evt) {
+			evt = (evt) ? evt : window.event;
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+				evt.preventDefault();
+			} else {
+				return true;
+			}
+		},
 		handleInput(event) {
 			this.updateValue(event.target.value);
 		},
 		updateValue(value) {
-			if (!isNaN(value)) {
-				this.$emit('update:modelValue', parseFloat(value).toFixed(this.rounded));
+			if (value === "") {
+				value = 0;
 			}
+			this.$emit('update:modelValue', parseFloat(value).toFixed(this.rounded));
+
 		}
 	},
 	mounted() {
