@@ -34,7 +34,7 @@ const close = () => emit('close');
 .modal {
 	position: relative;
 	width: 100%;
-	max-width: 850px;
+	max-width: 1000px;
 	max-height: 100%;
 	padding: 40px;
 	background: white;

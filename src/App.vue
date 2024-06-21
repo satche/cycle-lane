@@ -22,7 +22,7 @@
 import { ref } from 'vue'
 import Map from './components/Map.vue'
 import InfoPane from './components/info-pane/InfoPane.vue'
-import Report from './components/Report.vue'
+import Report from './components/report/Report.vue'
 import Modal from './components/ui/Modal.vue'
 import Onboarding from './components/Onboarding.vue'
 

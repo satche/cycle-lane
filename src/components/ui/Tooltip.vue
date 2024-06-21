@@ -1,5 +1,6 @@
 <template>
 	<div class="tooltip-container"
+		  v-if="text !== ''"
 		  @mouseenter="showTooltip"
 		  @mouseleave="hideTooltip">
 		<slot></slot>
@@ -9,6 +10,11 @@
 			{{ text }}
 		</div>
 	</div>
+
+	<div v-else>
+		<slot></slot>
+	</div>
+
 </template>
 
 <script>

@@ -13,19 +13,19 @@
                               id="routeLength"
                               unit="m."
                               v-model="routeLength"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :min="0" />
                   <InputField label="Largeur"
                               id="routeWidth"
                               unit="m."
                               v-model="routeWidth"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :min="0" />
                   <InputField label="Pente"
                               id="routeSteepness"
                               unit="%"
                               v-model="routeSteepness"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :step="0.1"
                               :rounded="1"
                               :min="0" />
@@ -74,7 +74,7 @@
                               id="irradiation"
                               unit="kWh/m²/an"
                               v-model="irradiation"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :min="0" />
                </div>
 
@@ -120,18 +120,16 @@
                               id="carDistance"
                               unit="m."
                               v-model="carDistance"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :min="0" />
                   <InputField label="Quantité CO2 par voiture"
                               id="carCo2Impact"
                               unit="kg/km"
                               v-model="carCo2Impact"
-                              @input="refreshReport"
+                              @change="refreshReport"
                               :step="0.001"
                               :rounded="3"
                               :min="0" />
-
-
                </div>
 
                <div class="infoFields">
@@ -140,12 +138,10 @@
                              unit="kg/an"
                              :tooltip="`Calculé sur ${workingDays} jours de travail par an`" />
 
-                  <p>Il faudrait environ {{ (totalCo2Quantity / carCo2Quantity).toFixed(2) }} voitures pour
-                     compenser
-                     l'impact total de CO2</p>
-
+                  <p>Il faudrait environ
+                     {{ (totalCo2Quantity / carCo2Quantity).toFixed(2) }}
+                     voitures pour compenser l'impact total de CO2</p>
                </div>
-
             </div>
 
             <hr>
@@ -156,20 +152,46 @@
                <p>Le tronçon sélectionné est pertinent pour…</p>
 
                <div class="informationFields">
-                  <InfoField label="Construire une piste cyclable"
-                             :value="routeScore"
-                             unit="/5"
-                             :rounded="1"
-                             :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
                   <InfoField label="Installer des panneaux solaires"
                              :value="solarScore"
                              unit="/5"
                              :rounded="1"
                              :tooltip="`Ce score se base sur l'énergie solaire annuelle et le nombre de foyers`" />
+                  <InfoField label="Construire une piste cyclable"
+                             :value="routeScore"
+                             unit="/5"
+                             :rounded="1"
+                             :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
+                  <Accordion>
+                     <InputField label="Fréquentation des transports publics"
+                                 id="transportFrequency"
+                                 unit="min./h."
+                                 v-model="transportFrequency"
+                                 @change="refreshReport"
+                                 :min="0" />
+
+                     <InputField label="Trajets Journaliers Moyens (TJM)"
+                                 id="averageDailyTraffic"
+                                 unit="TJM"
+                                 v-model="averageDailyTraffic"
+                                 @change="refreshReport"
+                                 :min="0" />
+
+                     <div class="detailMarkers">
+                        <DetailMarker marker-id="village1"
+                                      :data="village1"
+                                      :limit="averageDailyTraffic"
+                                      @detail-marker-update="detailMarkerUpdate" />
+                        <div class="detailMarker-separator"></div>
+                        <DetailMarker marker-id="village2"
+                                      :data="village2"
+                                      :limit="averageDailyTraffic"
+                                      @detail-marker-update="detailMarkerUpdate" />
+                     </div>
+                  </Accordion>
                </div>
 
             </div>
-
          </section>
 
       </div>
@@ -178,14 +200,24 @@
 
 
 <script>
-import Tooltip from './ui/Tooltip.vue';
-import InputField from './ui/InputField.vue';
-import InfoField from './ui/InfoField.vue';
 import Openrouteservice from "openrouteservice-js";
+import Tooltip from '../ui/Tooltip.vue';
+import InputField from '../ui/InputField.vue';
+import InfoField from '../ui/InfoField.vue';
+import Accordion from '../ui/Accordion.vue';
+import DetailMarker from './DetailMarker.vue';
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export default {
+   components: {
+      Tooltip,
+      InputField,
+      InfoField,
+      Accordion,
+      DetailMarker,
+   },
+
    props: {
       data: Object,
    },
@@ -231,15 +263,28 @@ export default {
          carCo2Impact: 0.133, // kg CO2 / km
          carCo2Quantity: 0,
 
+         transportFrequency: 30,
+         averageDailyTraffic: 4000,
+
+         village1: {
+            title: "Village 1",
+            population: 500,
+            maxAverageDailyTraffic: 10000,
+            cycleLaneNumber: 1,
+            roadNumber: 2,
+         },
+
+         village2: {
+            title: "Village 2",
+            population: 500,
+            maxAverageDailyTraffic: 10000,
+            cycleLaneNumber: 1,
+            roadNumber: 2,
+         },
+
          routeScore: 0,
          solarScore: 0,
       };
-   },
-
-   components: {
-      Tooltip,
-      InputField,
-      InfoField,
    },
 
    async mounted() {
@@ -298,10 +343,18 @@ export default {
             });
          this.carDistance = response.features[0].properties.summary.distance;
       },
+      detailMarkerUpdate({ markerId, data }) {
+         this[markerId] = data;
+         this.refreshReport();
+      },
       evaluateRoute() {
-
          const distance = this.routeLength / 1000; // in km
          const steepness = this.routeSteepness; // in %
+         const averageDailyTraffic = this.averageDailyTraffic;
+         const transportFrequency = this.transportFrequency;
+         const villagesPopulation = [this.village1.population, this.village2.population];
+         const villagePopulationMax = Math.max(...villagesPopulation);
+         const villagePopulationMin = Math.min(...villagesPopulation);
 
          const distanceFactors = [
             { max: 3, factor: 1.0 },
@@ -319,10 +372,25 @@ export default {
             { max: Infinity, factor: 0.0 }
          ];
 
+         const transportFrequencyFactors = [
+            { min: 60, factor: 1.0 },
+            { min: 30, factor: 0.75 },
+            { min: 15, factor: 0.5 },
+            { min: 5, factor: 0.25 },
+            { min: 0, factor: 0.0 }
+         ];
+
          const distanceEvaluation = distanceFactors.find(factor => distance < factor.max).factor;
          const steepnessEvaluation = steepnessFactors.find(factor => steepness < factor.max).factor;
+         const transportFrequencyEvaluation = transportFrequencyFactors.find(factor => transportFrequency >= factor.min).factor;
 
-         const score = (distanceEvaluation + steepnessEvaluation) / 2;
+         console.log(transportFrequencyEvaluation, transportFrequency);
+
+         const roadFrequencyEvaluation = ((averageDailyTraffic / this.village1.maxAverageDailyTraffic) + (averageDailyTraffic / this.village2.maxAverageDailyTraffic) * (villagePopulationMin / villagePopulationMax)) / 2;
+
+         const roadConnectionEvaluation = (this.village1.cycleLaneNumber / this.village1.roadNumber) + (this.village2.cycleLaneNumber / this.village2.roadNumber) / 2;
+
+         const score = (distanceEvaluation + steepnessEvaluation + transportFrequencyEvaluation + roadFrequencyEvaluation + roadConnectionEvaluation) / 5;
          const scoreOnFive = score * 5;
          this.routeScore = scoreOnFive;
       },
@@ -359,7 +427,7 @@ export default {
 <style scoped>
 .report_container {
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr 1.2fr;
    grid-gap: 5rem;
    width: 100%;
 }
@@ -414,5 +482,15 @@ hr {
    border: 0;
    border-top: 1px solid #ccc;
    margin: 2rem 0;
+}
+
+.detailMarkers {
+   display: grid;
+   grid-template-columns: 1fr 2px 1fr;
+   grid-gap: 1rem;
+
+   & .detailMarker-separator {
+      border-right: 1px solid #ccc;
+   }
 }
 </style>

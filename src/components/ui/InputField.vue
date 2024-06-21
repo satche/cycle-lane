@@ -1,21 +1,29 @@
 <template>
 	<div class="input-field">
-		<label :for="id">{{ label }}</label>
-		<input :id="id"
-				 type="number"
-				 :placeholder="placeholder"
-				 :min="min"
-				 :step="step"
-				 :rounded="rounded"
-				 :value="modelValue"
-				 @input="handleInput"
-				 @keypress="isNumber($event)"
-				 dir="rtl" />
-		<span class="unit">{{ unit }}</span>
+		<Tooltip :text="tooltip"
+					position="top">
+			<label :for="id">{{ label }}</label>
+		</Tooltip>
+		<span class="field">
+			<input :id="id"
+					 type="number"
+					 inputmode="numeric"
+					 :placeholder="placeholder"
+					 :min="min"
+					 :step="step"
+					 :rounded="rounded"
+					 :value="modelValue"
+					 @change="handleInput"
+					 @keypress="isNumber($event)"
+					 dir="rtl" />
+			<span class="unit">{{ unit }}</span>
+		</span>
 	</div>
 </template>
 
 <script>
+import Tooltip from './Tooltip.vue';
+
 export default {
 	name: "InputField",
 	props: {
@@ -31,7 +39,6 @@ export default {
 			type: [String, Number],
 			default: null,
 		},
-
 		modelValue: {
 			type: [String, Number],
 			default: "",
@@ -52,11 +59,15 @@ export default {
 			type: Number,
 			default: 0,
 		},
+		tooltip: {
+			type: String,
+			default: "",
+		},
 	},
 	methods: {
 		isNumber(evt) {
 			evt = (evt) ? evt : window.event;
-			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			let charCode = (evt.which) ? evt.which : evt.keyCode;
 			if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
 				evt.preventDefault();
 			} else {
@@ -64,7 +75,11 @@ export default {
 			}
 		},
 		handleInput(event) {
-			this.updateValue(event.target.value);
+			let value = event.target.value;
+			if (value < this.min) {
+				value = this.min;
+			}
+			this.updateValue(value);
 		},
 		updateValue(value) {
 			if (value === "") {
@@ -77,10 +92,13 @@ export default {
 	mounted() {
 		this.updateValue(this.modelValue);
 	},
+	components: {
+		Tooltip,
+	},
 };
 </script>
 
-<style scoped>
+<style>
 .input-field {
 	display: flex;
 	justify-content: space-between;
@@ -97,11 +115,20 @@ label {
 input {
 	flex: 2;
 	padding: 5px;
-	max-width: 100px;
+	padding-bottom: 2px;
+	margin-top: -5px;
+	max-width: 60px;
 	border: 0;
 	border-bottom: 1px solid #ccc;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
+	-moz-appearance: textfield;
+
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
 }
 
 .unit {
