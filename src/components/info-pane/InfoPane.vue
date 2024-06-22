@@ -78,11 +78,9 @@ export default {
 				true
 			);
 			const reportData = {
-				markersCoordinates: [
-					[this.data.startMarker.getLatLng().lng,
-					this.data.startMarker.getLatLng().lat],
-					[this.data.endMarker.getLatLng().lng,
-					this.data.endMarker.getLatLng().lat],
+				markers: [
+					this.data.startMarker,
+					this.data.endMarker
 				],
 				routeLength: this.data.route.features[0].properties.summary.distance,
 				routeSteepness: steepness,

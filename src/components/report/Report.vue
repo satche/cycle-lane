@@ -224,7 +224,7 @@ export default {
 
    data() {
       return {
-         markersCoordinates: this.data.markersCoordinates,
+         markers: this.data.markers,
 
          routeLength: this.data.routeLength,
          routeWidth: 3,
@@ -267,16 +267,16 @@ export default {
          averageDailyTraffic: 4000,
 
          village1: {
-            title: "Village 1",
-            population: 500,
+            title: this.data.markers[0].options.name,
+            population: this.data.markers[0].options.population,
             maxAverageDailyTraffic: 10000,
             cycleLaneNumber: 1,
             roadNumber: 2,
          },
 
          village2: {
-            title: "Village 2",
-            population: 500,
+            title: this.data.markers[1].options.name,
+            population: this.data.markers[1].options.population,
             maxAverageDailyTraffic: 10000,
             cycleLaneNumber: 1,
             roadNumber: 2,
@@ -288,6 +288,7 @@ export default {
    },
 
    async mounted() {
+      console.log(this.data);
       await this.calculateCarDistance();
       this.refreshReport();
    },
@@ -333,7 +334,8 @@ export default {
          const response = await this.direction
             .calculate({
                coordinates: [
-                  this.markersCoordinates[0], this.markersCoordinates[1]
+                  [this.markers[0].getLatLng().lng, this.markers[0].getLatLng().lat],
+                  [this.markers[1].getLatLng().lng, this.markers[1].getLatLng().lat],
                ],
                profile: "driving-car",
                format: "geojson",
@@ -383,8 +385,6 @@ export default {
          const distanceEvaluation = distanceFactors.find(factor => distance < factor.max).factor;
          const steepnessEvaluation = steepnessFactors.find(factor => steepness < factor.max).factor;
          const transportFrequencyEvaluation = transportFrequencyFactors.find(factor => transportFrequency >= factor.min).factor;
-
-         console.log(transportFrequencyEvaluation, transportFrequency);
 
          const roadFrequencyEvaluation = ((averageDailyTraffic / this.village1.maxAverageDailyTraffic) + (averageDailyTraffic / this.village2.maxAverageDailyTraffic) * (villagePopulationMin / villagePopulationMax)) / 2;
 
