@@ -17,7 +17,7 @@ export default {
 	},
 	computed: {
 		buttonText() {
-			return this.showDetail ? "Cacher les détails" : "Ajouter des détails";
+			return this.showDetail ? "Cacher les détails" : "Ajouter des détails pour améliorer la précision de la note";
 		},
 	},
 	methods: {
@@ -32,7 +32,6 @@ export default {
 details {
 	margin-top: -5px;
 	margin-bottom: 25px;
-	cursor: pointer;
 
 	font-size: 0.8rem;
 
@@ -49,6 +48,7 @@ details {
 
 summary {
 	color: #666;
+	cursor: pointer;
 }
 
 .detail-content {

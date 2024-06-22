@@ -163,6 +163,13 @@
                              :rounded="1"
                              :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
                   <Accordion>
+                     <div class="info">
+                        ℹ️ Si vous n'êtes pas sûr de quoi entrer dans ces champs, nous vous encourageons à récupérer
+                        ces informations directement sur
+                        <a href="https://www.geo.vd.ch/"
+                           target="_blank"
+                           rel="noopener">geo.vd.ch</a>
+                     </div>
                      <InputField label="Fréquentation des transports publics"
                                  id="transportFrequency"
                                  unit="min./h."
@@ -482,6 +489,13 @@ hr {
    border: 0;
    border-top: 1px solid #ccc;
    margin: 2rem 0;
+}
+
+.info {
+   color: #666;
+   border: 1px solid #ccc;
+   padding: 5px;
+   margin-bottom: 15px;
 }
 
 .detailMarkers {
