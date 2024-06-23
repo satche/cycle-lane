@@ -135,4 +135,10 @@ input {
 	font-size: 0.8rem;
 	color: #888;
 }
+
+@media (max-width: 768px) {
+	.input-field {
+		margin-bottom: 1rem;
+	} 
+}
 </style>

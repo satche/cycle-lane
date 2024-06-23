@@ -1,8 +1,11 @@
 <template>
 	<div>
 		<h1>Bienvenue sur GreenTrack! ☀️🚴🏻</h1>
-		<p>GreenTrack est une application web qui vous aider à analyser s'il est pertinent de construire des infrastructures de <strong>panneaux solaires</strong> sur des pistes cyclables choisies.
-			Sélectionnez 2 villages/villes différents sur la carte pour créer un itinéraire cyclable entre eux, puis <strong>générez un rapport.</strong></p>
+		<p>GreenTrack est une application web qui vous aider à analyser s'il est pertinent de construire des
+			infrastructures de <strong>panneaux solaires</strong> sur des pistes cyclables choisies.
+			Sélectionnez 2 villages/villes différents sur la carte pour créer un itinéraire cyclable entre eux, puis
+			<strong>générez un rapport.</strong>
+		</p>
 
 		<p>Nos recherches ne se sont étendues pour le moment que dans le canton de Vaud.</p>
 
@@ -69,5 +72,12 @@ h1 {
 	display: flex;
 	align-items: center;
 	margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+	h1 {
+		margin-top: 50px;
+		font-size: 1.2rem;
+	}
 }
 </style>

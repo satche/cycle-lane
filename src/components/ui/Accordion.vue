@@ -54,4 +54,28 @@ summary {
 .detail-content {
 	margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+	details {
+		font-size: 0.9rem;
+		margin-top: 10px;
+
+		& .input-field,
+		label,
+		input {
+			font-size: 0.9rem;
+			margin-right: 0;
+		}
+
+		label {
+			display: inline-block;
+			max-width: 50vw;
+		}
+	}
+
+	.detail-content {
+		margin-top: 15px;
+		font-size: 0.9rem;
+	}
+}
 </style>

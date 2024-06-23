@@ -102,7 +102,8 @@ export default {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 600px;
+	width: 50%;
+	max-width: 600px;
 	height: 100vh;
 	padding: 40px;
 	padding-top: 60px;
@@ -110,15 +111,6 @@ export default {
 	background: white;
 	transform: translateX(100%);
 	transition: transform 0.3s ease-out;
-}
-
-@media (max-width: 768px) {
-	#info-pane {
-		top: auto;
-		bottom: 0;
-		width: 100vw;
-		height: 50vh;
-	}
 }
 
 .infoPane_toggleButton {
@@ -164,8 +156,8 @@ export default {
 	position: absolute;
 	top: 16px;
 	right: 20px;
-	width: 15px;
-	height: 15px;
+	width: 30px;
+	height: 30px;
 	padding: 0;
 	border: none;
 	background: none;
@@ -175,6 +167,8 @@ export default {
 		position: absolute;
 		top: calc(50% - 13px);
 		left: calc(50% - 13px);
+		width: 30px;
+		height: 30px;
 		z-index: 10;
 	}
 
@@ -214,7 +208,7 @@ export default {
 	margin-bottom: 0px;
 
 	& .separator {
-		width: 150px;
+		width: 100px;
 		padding: 0 15px;
 		height: 100%;
 		text-align: center;
@@ -238,5 +232,87 @@ export default {
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+	#infoPane {
+		top: auto;
+		bottom: 0;
+		width: 100vw;
+		max-width: 100%;
+		height: 50vh;
+		transform: translateX(0) translateY(calc(100% - 10px));
+		padding: 10px;
+
+		&.isOpen .infoPane_toggleButton {
+			width: 100vw;
+			height: 0;
+
+			&>img {
+				transform: rotate(-90deg) translateX(25px) translateY(-15px);
+			}
+
+			&::after {
+				border-bottom: 1px solid white;
+				left: auto;
+				right: auto;
+			}
+		}
+
+		& hr {
+			margin: 5px 0;
+			margin-bottom: 10px;
+		}
+	}
+
+	.infoPane_toggleButton {
+		top: 0px;
+		left: 0;
+		right: 0;
+		width: 100vw;
+		height: 50px;
+		border-bottom: 0;
+
+		&>img {
+			top: 0;
+			left: auto;
+			right: auto;
+			transform: rotate(90deg) translateX(-25px) translateY(15px);
+		}
+
+		&:hover {
+			cursor: pointer;
+			transform: translateX(-0) translateY(-10px);
+		}
+
+		&::after {
+			top: -13px;
+			right: auto;
+			left: auto;
+			width: 60px;
+			height: 25px;
+			border: 1px solid black;
+			border-bottom: 0;
+			border-radius: 10px 10px 0 0;
+		}
+	}
+
+	.infoPane_questionButton {
+		top: auto;
+		left: auto;
+		bottom: 8px;
+		right: 8px;
+	}
+
+	#infoPane_markers .separator {
+		width: 0px;
+		overflow: hidden;
+		padding: 0;
+		margin: 0 5px;
+	}
+
+	.title {
+		font-size: 0.9rem;
+	}
 }
 </style>

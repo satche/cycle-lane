@@ -109,4 +109,15 @@ export default {
 		margin-right: 0.5rem;
 	}
 }
-</style>../../scripts/utils.js/index.js
+
+@media (max-width: 768px) {
+	#route {
+		margin-top: 5px;
+	}
+
+	.route_infos {
+		font-size: 0.8rem;
+		margin: 5px 0;
+	}
+}
+</style>

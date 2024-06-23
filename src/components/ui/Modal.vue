@@ -80,4 +80,23 @@ const close = () => emit('close');
 .v-leave-to {
 	opacity: 0;
 }
+
+@media (max-width: 768px) {
+	.modal-container {
+		padding: 0;
+	}
+
+	.modal {
+		height: 100%;
+		padding: 10px;
+		margin: 0;
+		border: 0;
+		overflow-x: hidden;
+	}
+
+	.modal-close {
+		top: 5px;
+		right: 5px;
+	}
+}
 </style>

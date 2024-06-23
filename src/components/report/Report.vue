@@ -507,4 +507,31 @@ hr {
       border-right: 1px solid #ccc;
    }
 }
+
+@media (max-width: 768px) {
+
+   .report_container {
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+   }
+
+   .title {
+      font-size: 1.2rem;
+   }
+
+   .report_field {
+      & .title {
+         font-size: 1rem;
+      }
+   }
+
+   .detailMarkers {
+      grid-template-columns: 1fr;
+      grid-gap: 0.8rem;
+
+      & .detailMarker-separator {
+         display: none;
+      }
+   }
+}
 </style>

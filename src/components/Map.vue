@@ -154,14 +154,21 @@ export default {
 
 			let lat = marker.getLatLng().lat;
 			let lng = marker.getLatLng().lng;
-			let offset = 0.08;
+
+			let latOffset = 0;
+			let lngOffset = 0.08;
+
+			if (window.innerWidth < 768) {
+				lngOffset = 0;
+				latOffset = -0.05;
+			}
 
 			marker.setOpacity(1);
 			if (this.startMarker && this.endMarker) {
 				this.map.fitBounds([this.startMarker.getLatLng(), this.endMarker.getLatLng()]);
 				return;
 			}
-			this.map.setView([lat, lng + offset], 12);
+			this.map.setView([lat + latOffset, lng + lngOffset], 12);
 		},
 
 		unselectAllMarkers() {

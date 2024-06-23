@@ -59,4 +59,11 @@ const props = defineProps({
 		margin-right: 0.5rem;
 	}
 }
+
+@media (max-width: 768px) {
+	.marker_infoList {
+		font-size: 0.8rem;
+		margin: 5px 0;
+	}
+}
 </style>
