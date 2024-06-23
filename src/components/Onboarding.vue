@@ -7,7 +7,12 @@
 			<strong>générez un rapport.</strong>
 		</p>
 
-		<p>Nos recherches ne se sont étendues pour le moment que dans le canton de Vaud.</p>
+		<p>Nos recherches ne se sont étendues pour le moment que dans le canton de Vaud.
+			Vous pouvez trouver le code source de l'application à l'adresse suivante:
+			<a href="https://github.com/satche/green-track"
+				target="_blank"
+				rel="noopener">https://github.com/satche/green-track</a>
+		</p>
 
 		<p><strong>Légende des marqueurs</strong></p>
 
