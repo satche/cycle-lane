@@ -13,4 +13,4 @@ $ npm install
 $ npm run dev
 ```
 
-Visit [http://localhost:5137](http://localhost:3000) to see the web app.
+Visit [http://localhost:5137](http://localhost:5137) to see the web app.
