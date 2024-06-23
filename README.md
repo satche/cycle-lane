@@ -1,4 +1,4 @@
-# Cycle Lane
+# GreenTrack
 
 An academical projet to cluster cycle lanes in Switzerland
 
