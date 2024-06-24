@@ -175,14 +175,17 @@
                                  unit="min./h."
                                  v-model="transportFrequency"
                                  @change="refreshReport"
-                                 :min="0" />
+                                 :min="0"
+                                 :tooltip="`Fréquentation des bus/train sur le tronçon routier`"/>
 
                      <InputField label="Trajets Journaliers Moyens (TJM)"
                                  id="averageDailyTraffic"
                                  unit="TJM"
                                  v-model="averageDailyTraffic"
                                  @change="refreshReport"
-                                 :min="0" />
+                                 :min="0"
+                                 :tooltip="`Nombre de trajets allers-retours de véhicules, en moyenne, sur le tronçon routier`"
+                                 />
 
                      <div class="detailMarkers">
                         <DetailMarker marker-id="village1"
