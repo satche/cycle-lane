@@ -17,12 +17,13 @@ export default {
 	},
 	computed: {
 		buttonText() {
-			return this.showDetail ? "Cacher les détails" : "Ajouter des détails pour améliorer la précision de la note";
+			return this.showDetail ? "Désactiver les détails additionnels" : "Ajouter des détails pour améliorer la précision de la note";
 		},
 	},
 	methods: {
 		toggleDetail() {
 			this.showDetail = !this.showDetail;
+			this.$emit("toggle-detail", this.showDetail);
 		},
 	},
 };

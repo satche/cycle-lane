@@ -162,7 +162,7 @@
                              unit="/5"
                              :rounded="1"
                              :tooltip="`Ce score se base sur la longueur et la pente du tronçon`" />
-                  <Accordion>
+                  <Accordion @toggle-detail="toggleDetail($event)">
                      <div class="info">
                         ℹ️ Si vous n'êtes pas sûr de quoi entrer dans ces champs, nous vous encourageons à récupérer
                         ces informations directement sur
@@ -176,7 +176,7 @@
                                  v-model="transportFrequency"
                                  @change="refreshReport"
                                  :min="0"
-                                 :tooltip="`Fréquentation des bus/train sur le tronçon routier`"/>
+                                 :tooltip="`Fréquentation des bus/train sur le tronçon routier`" />
 
                      <InputField label="Trajets Journaliers Moyens (TJM)"
                                  id="averageDailyTraffic"
@@ -184,8 +184,7 @@
                                  v-model="averageDailyTraffic"
                                  @change="refreshReport"
                                  :min="0"
-                                 :tooltip="`Nombre de trajets allers-retours de véhicules, en moyenne, sur le tronçon routier`"
-                                 />
+                                 :tooltip="`Nombre de trajets allers-retours de véhicules, en moyenne, sur le tronçon routier`" />
 
                      <div class="detailMarkers">
                         <DetailMarker marker-id="village1"
@@ -235,6 +234,7 @@ export default {
    data() {
       return {
          markers: this.data.markers,
+         detailedEvaluation: false,
 
          routeLength: this.data.routeLength,
          routeWidth: 3,
@@ -304,12 +304,16 @@ export default {
    },
 
    methods: {
+      toggleDetail(showDetail) {
+         this.detailedEvaluation = showDetail;
+         this.refreshReport();
+      },
       refreshReport() {
          this.calculateConcreteVolume();
          this.calculateConcreteQuantity();
          this.calculateSolarPannelProduction();
          this.calculateCO2();
-         this.evaluateRoute();
+         this.evaluateRoute(this.detailedEvaluation);
          this.evaluateSolar();
       },
       calculateConcreteVolume() {
@@ -359,7 +363,7 @@ export default {
          this[markerId] = data;
          this.refreshReport();
       },
-      evaluateRoute() {
+      evaluateRoute(detailed) {
          const distance = this.routeLength / 1000; // in km
          const steepness = this.routeSteepness; // in %
          const averageDailyTraffic = this.averageDailyTraffic;
@@ -400,7 +404,9 @@ export default {
 
          const roadConnectionEvaluation = (this.village1.cycleLaneNumber / this.village1.roadNumber) + (this.village2.cycleLaneNumber / this.village2.roadNumber) / 2;
 
-         const score = (distanceEvaluation + steepnessEvaluation + transportFrequencyEvaluation + roadFrequencyEvaluation + roadConnectionEvaluation) / 5;
+         const regularScore = (distanceEvaluation + steepnessEvaluation) / 2;
+         const detailedScore = (distanceEvaluation + steepnessEvaluation + transportFrequencyEvaluation + roadFrequencyEvaluation + roadConnectionEvaluation) / 5;
+         const score = detailed ? detailedScore : regularScore;
          const scoreOnFive = score * 5;
          this.routeScore = scoreOnFive;
       },
