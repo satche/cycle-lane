@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<h1>Bienvenue sur GreenTrack! ☀️🚴🏻</h1>
-		<p>GreenTrack est une application web qui vous aider à analyser s'il est pertinent de construire des
+		<p>GreenTrack est une application web qui vous aide à analyser s'il est pertinent de construire des
 			infrastructures de <strong>panneaux solaires</strong> sur des pistes cyclables choisies.
 			Sélectionnez 2 villages/villes différents sur la carte pour créer un itinéraire cyclable entre eux, puis
 			<strong>générez un rapport.</strong>
 		</p>
 
-		<p>Nos recherches ne se sont étendues pour le moment que dans le canton de Vaud.
+		<p>Pour le moment, nos recherches ne se sont étendues qu'aux villages du canton de Vaud.
 			Vous pouvez trouver le code source de l'application à l'adresse suivante:
 			<a href="https://github.com/satche/green-track"
 				target="_blank"
