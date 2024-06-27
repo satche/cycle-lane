@@ -70,7 +70,6 @@ export default {
 				population: data["Population"],
 				energy: data["Energie solaire"],
 				cluster: data["Cluster"],
-
 			}
 
 			if (markerData.lat === undefined || markerData.lng === undefined) {
@@ -78,7 +77,6 @@ export default {
 			}
 
 			// Define marker's color according to cluster
-
 			let colors = [
 				"#e61038", // Train stations (red)
 				"#4ab4d5", // Rural areas (blue)

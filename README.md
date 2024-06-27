@@ -1,8 +1,6 @@
 # GreenTrack
 
-An academical projet to cluster cycle lanes in Switzerland.
-
-Visit at [https://satche.github.io/green-track](https://satche.github.io/green-track).
+An academical projet to cluster cycle lanes with potential for solar panels installation in Vaud, Switzerland.
 
 ## Setup
 
@@ -15,4 +13,12 @@ $ npm install
 $ npm run dev
 ```
 
-Visit [http://localhost:5137](http://localhost:5137) to see the web app.
+Visit [localhost:5137/green-track](http://localhost:5137/green-track) to see the web app.
+
+## About
+
+In the context of my master degree at [HES-SO](https://www.hes-so.ch), I had to work on a interdisciplinary project about the installation of solar panels on cycle lanes in Switzerland. Data and calulations was made by two colleagues from Data Science and Energy Engineering. I created this web app to visualize the results.
+
+You can check our report and data treatment in `data` folder.
+
+This work is licensed under the [MIT License](LICENSE).
